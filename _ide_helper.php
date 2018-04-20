@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.6.16 on 2018-04-16 02:37:18.
+ * Generated for Laravel 5.6.17 on 2018-04-20 13:47:28.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3276,98 +3276,6 @@ namespace Illuminate\Support\Facades {
         public static function getQueuedCookies()
         {
             return \Illuminate\Cookie\CookieJar::getQueuedCookies();
-        }
-         
-    }
-
-    class Crypt {
-        
-        /**
-         * Determine if the given key and cipher combination is valid.
-         *
-         * @param string $key
-         * @param string $cipher
-         * @return bool 
-         * @static 
-         */ 
-        public static function supported($key, $cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
-        }
-        
-        /**
-         * Create a new encryption key for the given cipher.
-         *
-         * @param string $cipher
-         * @return string 
-         * @static 
-         */ 
-        public static function generateKey($cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::generateKey($cipher);
-        }
-        
-        /**
-         * Encrypt the given value.
-         *
-         * @param mixed $value
-         * @param bool $serialize
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static 
-         */ 
-        public static function encrypt($value, $serialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::encrypt($value, $serialize);
-        }
-        
-        /**
-         * Encrypt a string without serialization.
-         *
-         * @param string $value
-         * @return string 
-         * @static 
-         */ 
-        public static function encryptString($value)
-        {
-            return \Illuminate\Encryption\Encrypter::encryptString($value);
-        }
-        
-        /**
-         * Decrypt the given value.
-         *
-         * @param mixed $payload
-         * @param bool $unserialize
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static 
-         */ 
-        public static function decrypt($payload, $unserialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::decrypt($payload, $unserialize);
-        }
-        
-        /**
-         * Decrypt the given string without unserialization.
-         *
-         * @param string $payload
-         * @return string 
-         * @static 
-         */ 
-        public static function decryptString($payload)
-        {
-            return \Illuminate\Encryption\Encrypter::decryptString($payload);
-        }
-        
-        /**
-         * Get the encryption key.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getKey()
-        {
-            return \Illuminate\Encryption\Encrypter::getKey();
         }
          
     }
@@ -11569,13 +11477,13 @@ namespace Illuminate\Support\Facades {
          * @param array $rules
          * @param array $messages
          * @param array $customAttributes
-         * @return void 
+         * @return array 
          * @throws \Illuminate\Validation\ValidationException
          * @static 
          */ 
         public static function validate($data, $rules, $messages = array(), $customAttributes = array())
         {
-            \Illuminate\Validation\Factory::validate($data, $rules, $messages, $customAttributes);
+            return \Illuminate\Validation\Factory::validate($data, $rules, $messages, $customAttributes);
         }
         
         /**
@@ -12440,6 +12348,102 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace Laravel\Socialite\Facades { 
+
+    class Socialite {
+        
+        /**
+         * Get a driver instance.
+         *
+         * @param string $driver
+         * @return mixed 
+         * @static 
+         */ 
+        public static function with($driver)
+        {
+            return \Laravel\Socialite\SocialiteManager::with($driver);
+        }
+        
+        /**
+         * Build an OAuth 2 provider instance.
+         *
+         * @param string $provider
+         * @param array $config
+         * @return \Laravel\Socialite\Two\AbstractProvider 
+         * @static 
+         */ 
+        public static function buildProvider($provider, $config)
+        {
+            return \Laravel\Socialite\SocialiteManager::buildProvider($provider, $config);
+        }
+        
+        /**
+         * Format the server configuration.
+         *
+         * @param array $config
+         * @return array 
+         * @static 
+         */ 
+        public static function formatConfig($config)
+        {
+            return \Laravel\Socialite\SocialiteManager::formatConfig($config);
+        }
+        
+        /**
+         * Get the default driver name.
+         *
+         * @throws \InvalidArgumentException
+         * @return string 
+         * @static 
+         */ 
+        public static function getDefaultDriver()
+        {
+            return \Laravel\Socialite\SocialiteManager::getDefaultDriver();
+        }
+        
+        /**
+         * Get a driver instance.
+         *
+         * @param string $driver
+         * @return mixed 
+         * @static 
+         */ 
+        public static function driver($driver = null)
+        {
+            //Method inherited from \Illuminate\Support\Manager            
+            return \Laravel\Socialite\SocialiteManager::driver($driver);
+        }
+        
+        /**
+         * Register a custom driver creator Closure.
+         *
+         * @param string $driver
+         * @param \Closure $callback
+         * @return $this 
+         * @static 
+         */ 
+        public static function extend($driver, $callback)
+        {
+            //Method inherited from \Illuminate\Support\Manager            
+            return \Laravel\Socialite\SocialiteManager::extend($driver, $callback);
+        }
+        
+        /**
+         * Get all of the created "drivers".
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getDrivers()
+        {
+            //Method inherited from \Illuminate\Support\Manager            
+            return \Laravel\Socialite\SocialiteManager::getDrivers();
+        }
+         
+    }
+ 
+}
+
 namespace Barryvdh\Debugbar { 
 
     class Facade {
@@ -13008,8 +13012,6 @@ namespace  {
     class Config extends \Illuminate\Support\Facades\Config {}
 
     class Cookie extends \Illuminate\Support\Facades\Cookie {}
-
-    class Crypt extends \Illuminate\Support\Facades\Crypt {}
 
     class DB extends \Illuminate\Support\Facades\DB {}
 
@@ -13912,6 +13914,25 @@ namespace  {
             }
          
             /**
+             * Add a subquery join clause to the query.
+             *
+             * @param \Closure|\Illuminate\Database\Query\Builder|string $query
+             * @param string $as
+             * @param string $first
+             * @param string|null $operator
+             * @param string|null $second
+             * @param string $type
+             * @param bool $where
+             * @return \Illuminate\Database\Query\Builder|static 
+             * @throws \InvalidArgumentException
+             * @static 
+             */ 
+            public static function joinSub($query, $as, $first, $operator = null, $second = null, $type = 'inner', $where = false)
+            {    
+                return \Illuminate\Database\Query\Builder::joinSub($query, $as, $first, $operator, $second, $type, $where);
+            }
+         
+            /**
              * Add a left join to the query.
              *
              * @param string $table
@@ -13942,6 +13963,22 @@ namespace  {
             }
          
             /**
+             * Add a subquery left join to the query.
+             *
+             * @param \Closure|\Illuminate\Database\Query\Builder|string $query
+             * @param string $as
+             * @param string $first
+             * @param string|null $operator
+             * @param string|null $second
+             * @return \Illuminate\Database\Query\Builder|static 
+             * @static 
+             */ 
+            public static function leftJoinSub($query, $as, $first, $operator = null, $second = null)
+            {    
+                return \Illuminate\Database\Query\Builder::leftJoinSub($query, $as, $first, $operator, $second);
+            }
+         
+            /**
              * Add a right join to the query.
              *
              * @param string $table
@@ -13969,6 +14006,22 @@ namespace  {
             public static function rightJoinWhere($table, $first, $operator, $second)
             {    
                 return \Illuminate\Database\Query\Builder::rightJoinWhere($table, $first, $operator, $second);
+            }
+         
+            /**
+             * Add a subquery right join to the query.
+             *
+             * @param \Closure|\Illuminate\Database\Query\Builder|string $query
+             * @param string $as
+             * @param string $first
+             * @param string|null $operator
+             * @param string|null $second
+             * @return \Illuminate\Database\Query\Builder|static 
+             * @static 
+             */ 
+            public static function rightJoinSub($query, $as, $first, $operator = null, $second = null)
+            {    
+                return \Illuminate\Database\Query\Builder::rightJoinSub($query, $as, $first, $operator, $second);
             }
          
             /**
@@ -15225,6 +15278,8 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class Socialite extends \Laravel\Socialite\Facades\Socialite {}
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
  

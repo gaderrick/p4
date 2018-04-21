@@ -39,8 +39,8 @@ __Delete__
   + Observe confirmation message
 
 ## Outside resources
-  + Reviewed documentation at [Let's Encrypt](https://letsencrypt.org/) and implemented SSL on my production web server 
-  + Integrated and modified a [Laravel Socialite github project](https://github.com/saqueib/social-auth) to implement social media authentication 
+  + Reviewed documentation at [Let's Encrypt](https://letsencrypt.org/) and implemented SSL on my production web server.
+  + Integrated and modified a [Laravel Socialite github project](https://github.com/saqueib/social-auth) to implement social media authentication using this [documentation](http://www.qcode.in/oauth-login-using-facebook-google-twitter-and-github-with-laravel-socialite/).  
   
 
 ## Code style divergences

@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* Style the header */
+body {
+    width: 100%;
+    margin:0;
+    font-family: Arial, sans-serif;
+    font-size: 1vw;
+    background: white;
+}
+
+.header {
+    top: 0;
+    background: #555;
+    color: #f1f1f1;
+    display:table;
+    width:100%;
+}
+
+.footer {
+    background: #555;
+    color: #f1f1f1;
+    display:table;
+    width:100%;
+}
+
+/* Page content */
+.content {
+    padding: 0px;
+}

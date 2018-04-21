@@ -17,9 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// If user makes it to /home, they've been authenticated
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Social Auth
+// Socialite Auth Routes
 Route::get('auth/social', 'Auth\SocialAuthController@show')->name('social.login');
 Route::get('oauth/{driver}', 'Auth\SocialAuthController@redirectToProvider')->name('social.oauth');
 Route::get('oauth/{driver}/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('social.callback');

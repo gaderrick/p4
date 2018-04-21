@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
+@section('pagename')
+    Login
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Login</div>
+                    <div class="panel-heading">Login using your existing credentials</div>
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
@@ -63,8 +67,32 @@
                             </div>
                         </form>
                     </div>
+                    <div class="panel-heading">or with one of these</div><br>
+                    <div class="col-md-6" style="align-content: center">
+                        <a href="{{ route('social.oauth', 'facebook') }}">
+                            <img width="36"
+                                 src="{{ asset('images/icon-facebook-logo.svg') }}"
+                                 alt="Facebook"></a> &nbsp;
+                        <a href="{{ route('social.oauth', 'google') }}">
+                            <img width="36"
+                                 src="{{ asset('images/icon-google-plus-logo.svg') }}"
+                                 alt="Google"></a> &nbsp;
+                        <a href="{{ route('social.oauth', 'github') }}">
+                            <img width="36"
+                                 src="{{ asset('images/icon-github-logo.svg') }}"
+                                 alt="Github"></a> &nbsp;
+                        <a href="{{ route('social.oauth', 'linkedin') }}">
+                            <img width="36"
+                                 src="{{ asset('images/icon-linkedin-logo.svg') }}"
+                                 alt="LinkedIn"></a> &nbsp;
+                        <a href="{{ route('social.oauth', 'twitter') }}">
+                            <img width="36"
+                                 src="{{ asset('images/icon-twitter-logo.svg') }}"
+                                 alt="Twitter"></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <br><br><br>
 @endsection

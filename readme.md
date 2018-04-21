@@ -39,7 +39,9 @@ __Delete__
   + Observe confirmation message
 
 ## Outside resources
-*Your list of outside resources go here*
+  + Reviewed documentation at [Let's Encrypt](https://letsencrypt.org/) and implemented SSL on my production web server 
+  + Integrated and modified a [Laravel Socialite github project](https://github.com/saqueib/social-auth) to implement social media authentication 
+  
 
 ## Code style divergences
 *List any divergences from PSR-1/PSR-2 and course guidelines on code style*

@@ -16,7 +16,6 @@
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <body>
-<div id="app">
     <div class="header" id="myHeader">
         <div style="display:table-row">
             <div style="display:table-cell; padding-left: 10px">
@@ -57,6 +56,8 @@
         @yield('content')
     </div>
 
+    <div style="height: 25px;"></div>
+
     <div class="footer" id="myFooter">
         <div style="display:table-row">
             <div style="display:table-cell; padding-left: 10px">
@@ -64,10 +65,8 @@
             </div>
         </div>
     </div>
-</div>
-<br><br><br><br><br><br>
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

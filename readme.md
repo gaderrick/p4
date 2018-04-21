@@ -39,9 +39,9 @@ __Delete__
   + Observe confirmation message
 
 ## Outside resources
-  + Reviewed documentation at [Let's Encrypt](https://letsencrypt.org/) and implemented SSL on my production web server.
+  + Reviewed documentation at [Let's Encrypt](https://letsencrypt.org/) and implemented SSL using the Let's Encrypt libraries.
   + Integrated and modified a [Laravel Socialite github project](https://github.com/saqueib/social-auth) to implement social media authentication using this [documentation](http://www.qcode.in/oauth-login-using-facebook-google-twitter-and-github-with-laravel-socialite/).  
-  
+  + Circle icons for social media links from [here](https://plus.google.com/u/0/+MohdSaquibAnsari) and [here](https://github.com/logos).
 
 ## Code style divergences
 *List any divergences from PSR-1/PSR-2 and course guidelines on code style*

@@ -2,7 +2,7 @@
 /* Style the header */
 body {
     width: 100%;
-    margin:0;
+    margin: 0;
     font-family: Arial, sans-serif;
     font-size: 1vw;
     background: white;
@@ -12,18 +12,35 @@ body {
     top: 0;
     background: #555;
     color: #f1f1f1;
-    display:table;
-    width:100%;
+    display: table;
+    width: 100%;
 }
 
 .footer {
     background: #555;
     color: #f1f1f1;
-    display:table;
-    width:100%;
+    display: table;
+    width: 100%;
 }
 
 /* Page content */
 .content {
     padding: 0px;
+}
+
+.border {
+    border-width: thin;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.center{
+    margin-right: auto;
+    margin-left: auto;
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('pagename')
     Register
@@ -21,7 +21,7 @@
                                    required autofocus>
                             @if ($errors->has('name'))
                                 <span class="help-block alert-danger">
-                                    <strong>{{ $errors->first('name') }}</strong>
+                                    {{ $errors->first('name') }}
                                 </span>
                             @endif
                         </div>
@@ -35,7 +35,7 @@
                                    required>
                             @if ($errors->has('email'))
                                 <span class="help-block alert-danger">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    {{ $errors->first('email') }}
                                 </span>
                             @endif
                         </div>
@@ -48,7 +48,7 @@
 
                             @if ($errors->has('password'))
                                 <span class="help-block alert-danger">
-                                    <strong>{{ $errors->first('password') }}</strong>
+                                    {{ $errors->first('password') }}
                                 </span>
                             @endif
                         </div>

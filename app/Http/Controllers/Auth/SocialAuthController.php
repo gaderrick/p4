@@ -86,6 +86,8 @@ class SocialAuthController extends Controller
      */
     protected function sendSuccessResponse()
     {
+        // check to see if more info is needed to setup their account and if so send to the settings page
+
         return redirect()->intended('home');
     }
 

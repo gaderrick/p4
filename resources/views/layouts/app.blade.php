@@ -16,57 +16,59 @@
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <body>
-    <div class="header" id="myHeader">
-        <div style="display:table-row">
-            <div style="display:table-cell; padding-left: 10px">
-                <h3>
-                    Meet Organizer
-                </h3>
-            </div>
-            <div style="display:table-cell; text-align: right; padding-right: 10px">
-                @if (Auth::guest())
-                    <a href="{{ url('/') }}">HOME</a> |
-                    <a href="{{ route('login') }}">LOGIN</a> |
-                    <a href="{{ route('register') }}">REGISTER</a>
-                @else
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <img src="{{ auth()->user()->avatar }}" alt="" width="30" class="img-circle">
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
+<div class="header" id="myHeader">
+    <div style="display:table-row">
+        <div style="display:table-cell; padding-left: 10px">
+            <h3>
+                Meet Organizer
+            </h3>
+        </div>
+        <div style="display:table-cell; text-align: right; padding-right: 10px">
+            @if (Auth::guest())
+                <a href="{{ url('/') }}" style="color:white">HOME</a> |
+                <a href="{{ route('login') }}" style="color:white">LOGIN</a> |
+                <a href="{{ route('register') }}" style="color:white">REGISTER</a>
+            @else
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                   style="color:white">
+                    <img src="{{ auth()->user()->avatar }}" alt="" width="30" class="img-circle">
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
 
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                           style="color: blue">
+                            Logout
+                        </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                  style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
-                @endif
-            </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                              style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            @endif
         </div>
     </div>
+</div>
 
-    <div class="content">
-        @yield('content')
-    </div>
+<div class="content">
+    @yield('content')
+</div>
 
-    <div style="height: 25px;"></div>
+<div style="height: 25px;"></div>
 
-    <div class="footer" id="myFooter">
-        <div style="display:table-row">
-            <div style="display:table-cell; padding-left: 10px">
-                Footer bar
-            </div>
+<div class="footer" id="myFooter">
+    <div style="display:table-row">
+        <div style="display:table-cell; padding-left: 10px">
+            Footer bar
         </div>
     </div>
+</div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

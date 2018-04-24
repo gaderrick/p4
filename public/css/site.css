@@ -10,14 +10,14 @@ body {
 
 .header {
     top: 0;
-    background: blue;
+    background: #007bff;
     color: white;
     display: table;
     width: 100%;
 }
 
 .footer {
-    background: blue;
+    background: #007bff;
     color: white;
     display: table;
     width: 100%;

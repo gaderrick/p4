@@ -25,7 +25,7 @@
         </div>
         <div style="display:table-cell; text-align: right; padding-right: 10px">
             @if (Auth::guest())
-                <a href="{{ url('/') }}" style="color:white">HOME</a> |
+                <a href="{{ url('/home') }}" style="color:white">HOME</a> |
                 <a href="{{ route('login') }}" style="color:white">LOGIN</a> |
                 <a href="{{ route('register') }}" style="color:white">REGISTER</a>
             @else

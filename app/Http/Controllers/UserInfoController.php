@@ -3,27 +3,33 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Organization;
+use App\User_info;
 use Illuminate\Http\Request;
 
-class OrganizationController extends Controller
+class UserInfoController extends Controller
 {
     public function list()
     {
-        $currentUserID = Auth::user()->id;
-        $organizations = Organization::where('owner_user_id', '=', $currentUserID)->orderBy('organization_name')->get();
-
-//      $alert = $request->session()->get('alert');
-//      The following line needs to go below in the return:
-
-        return view('organization.list')->with([
-            'organizations' => $organizations
-            // 'alert' => $alert
-        ]);
+        // first thing get current user's id from Auth and only show their user infos
+        $currentUserID=Auth::user()->id;
+        dump($currentUserID);
     }
 
     public function show($id)
     {
+        $user_infos = User_info::orderBy('id')->get();
+        dump($id);
+        dump($user_infos);
+//        $books = Book::orderBy('title')->get();
+//        $newBooks = $books->sortByDesc('created_at')->take(3);
+//        $alert = $request->session()->get('alert');
+//
+//        return view('books.index')->with([
+//            'books' => $books,
+//            'newBooks' => $newBooks,
+//            'alert' => $alert
+//        ]);
+
     }
 
     public function new()
@@ -34,7 +40,7 @@ class OrganizationController extends Controller
     {
     }
 
-    public function store()
+    public function store(Request $request)
     {
 //        $this->validate($request, [
 //            'title' => 'required',

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('pagename')
-    List of Organizations
+    List of Participants
 @endsection
 
 @section('content')

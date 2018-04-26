@@ -11,9 +11,11 @@ class OrganizationController extends Controller
     public function create(Request $request)
     {
         $alert = $request->session()->get('alert');
+        $alert_color = $request->session()->get('alert_color');
 
         return view('organization.create')->with([
-           'alert' => $alert
+           'alert' => $alert,
+           'alert_color' => $alert_color
         ]);
     }
 
@@ -53,10 +55,11 @@ class OrganizationController extends Controller
         $currentUserID = Auth::user()->id;
         $organizations = Organization::where('owner_user_id', '=', $currentUserID)->orderBy('organization_name')->get();
 
-        $a=$organizations->count();
-        if ($a==0) {
+        $cnt=$organizations->count();
+        if ($cnt==0) {
             return redirect()->route('org.create')->with([
-                'alert'=>'No organizations are setup for this user'
+                'alert' => 'No organizations are setup for this user. You may set one up below.',
+                'alert_color' => 'yellow'
             ]);
         }
 

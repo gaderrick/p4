@@ -55,25 +55,29 @@
     </div>
 </div>
 @if (session('alert'))
-    <div class="col-md-12 flashAlert">
+    @if(session('alert_color'))
+        <div class="col-md-12 flashAlert" style="background-color: {{ session('alert_color') }}">
+    @else
+        <div class="col-md-12 flashAlert">
+    @endif
         {{ session('alert') }}
-    </div>
-@endif
-<div class="content">
-    @yield('content')
-</div>
-
-<div style="height: 25px;"></div>
-
-<div class="footer" id="myFooter">
-    <div style="display:table-row">
-        <div style="display:table-cell; padding-left: 10px">
-            Footer bar
         </div>
-    </div>
-</div>
+@endif
+        <div class="content">
+            @yield('content')
+        </div>
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+        <div style="height: 25px;"></div>
+
+        <div class="footer" id="myFooter">
+            <div style="display:table-row">
+                <div style="display:table-cell; padding-left: 10px">
+                    Footer bar
+                </div>
+            </div>
+        </div>
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        </div>
 </body>
 </html>

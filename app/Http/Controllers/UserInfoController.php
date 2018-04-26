@@ -8,8 +8,15 @@ use Illuminate\Http\Request;
 
 class UserInfoController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
+        $alert = $request->session()->get('alert');
+        $alert_color = $request->session()->get('alert_color');
+
+        return view('userinfo.create')->with([
+            'alert' => $alert,
+            'alert_color' => $alert_color
+        ]);
     }
 
     public function store(Request $request)
@@ -46,8 +53,21 @@ class UserInfoController extends Controller
     public function index()
     {
         // first thing get current user's id from Auth and only show their user infos
-        $currentUserID=Auth::user()->id;
-        dump($currentUserID);
+        $currentUserID = Auth::user()->id;
+        $userinfos = Userinfo::where('owner_user_id', '=', $currentUserID)->orderBy('last_name')->get();
+
+        $cnt = $userinfos->count();
+
+        if ($cnt == 0) {
+            return redirect()->route('userinfo.create')->with([
+                'alert' => 'No participants are setup for this user. You may set one up below.',
+                'alert_color' => 'yellow'
+            ]);
+        }
+
+        return view('userinfo.index')->with([
+            'userinfos' => $userinfos
+        ]);
     }
 
     public function edit($id)

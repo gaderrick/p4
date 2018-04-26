@@ -8,29 +8,7 @@ use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
 {
-    public function list()
-    {
-        $currentUserID = Auth::user()->id;
-        $organizations = Organization::where('owner_user_id', '=', $currentUserID)->orderBy('organization_name')->get();
-
-//      $alert = $request->session()->get('alert');
-//      The following line needs to go below in the return:
-
-        return view('organization.list')->with([
-            'organizations' => $organizations
-            // 'alert' => $alert
-        ]);
-    }
-
-    public function show($id)
-    {
-    }
-
-    public function new()
-    {
-    }
-
-    public function edit($id)
+    public function create()
     {
     }
 
@@ -65,7 +43,25 @@ class OrganizationController extends Controller
 //        ]);
     }
 
-    public function update(Request $request, $id)
+    public function index()
+    {
+        $currentUserID = Auth::user()->id;
+        $organizations = Organization::where('owner_user_id', '=', $currentUserID)->orderBy('organization_name')->get();
+
+//      $alert = $request->session()->get('alert');
+//      The following line needs to go below in the return:
+
+        return view('organization.list')->with([
+            'organizations' => $organizations
+            // 'alert' => $alert
+        ]);
+    }
+
+    public function edit($id)
+    {
+    }
+
+    public function update($id)
     {
 //        $this->validate($request, [
 //            'title' => 'required',
@@ -90,6 +86,10 @@ class OrganizationController extends Controller
     }
 
     public function delete($id)
+    {
+    }
+
+    public function destroy($id)
     {
     }
 }

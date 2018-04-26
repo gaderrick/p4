@@ -3,6 +3,11 @@
 // Authentication Routes
 Auth::routes();
 
+// Socialite Auth Routes
+Route::get('auth/social', 'Auth\SocialAuthController@show')->name('social.login');
+Route::get('oauth/{driver}', 'Auth\SocialAuthController@redirectToProvider')->name('social.oauth');
+Route::get('oauth/{driver}/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('social.callback');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -11,21 +16,35 @@ Route::get('/', function () {
 // This route will show everything that belongs to a user or is available for them to edit
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-// Socialite Auth Routes
-Route::get('auth/social', 'Auth\SocialAuthController@show')->name('social.login');
-Route::get('oauth/{driver}', 'Auth\SocialAuthController@redirectToProvider')->name('social.oauth');
-Route::get('oauth/{driver}/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('social.callback');
+// ORGANIZATION ROUTES
+// CREATE: Show the form to add an organization; process the form to add a new organization
+Route::get('/org/create','OrganizationController@create')->name('org.create')->middleware('auth');
+Route::post('/org','OrganizationController@store')->name('org.store')->middleware('auth');
 
-// Organization Routes
-Route::get('/org/list','OrganizationController@list')->name('org.list')->middleware('auth'); // List all organizations owned/managed by a user
-Route::get('/org/show/{id}','OrganizationController@show')->name('org.show')->middleware('auth'); // View an organization details (if authorized)
-Route::get('/org/new')->name('org.new')->middleware('auth'); // Add a new organization
-Route::get('/org/edit/{id}')->name('org.edit')->middleware('auth'); // Edit an organization
-Route::get('/org/delete/{id}')->name('org.delete')->middleware('auth'); // Delete an organization
+// READ: List all organizations owned/managed by a user
+Route::get('/org/index','OrganizationController@index')->name('org.index')->middleware('auth');
 
-// User Info Routes
-Route::get('/userinfo/list','UserInfoController@list')->name('userinfo.list')->middleware('auth'); // List all organizations owned/managed by a user
-Route::get('/userinfo/show/{id}','UserInfoController@show')->name('userinfo.show')->middleware('auth'); // View details of user's info
-Route::get('/userinfo/new')->name('userinfo.new')->middleware('auth'); // Add a new user's info
-Route::get('/userinfo/edit/{id}')->name('userinfo.edit')->middleware('auth'); // Edit a user's info
-Route::get('/userinfo/delete/{id}')->name('userinfo.delete')->middleware('auth'); // Delete an organization
+// UPDATE: Show the edit form; process the form changes
+Route::get('/org/{id}/edit','OrganizationController@edit')->name('org.edit')->middleware('auth');
+Route::put('/org/{id}','OrganizationController@update')->name('org.update')->middleware('auth');
+
+// DELETE: Show the delete form; process the deletion
+Route::get('/org/{id}/delete','OrganizationController@delete')->name('org.delete')->middleware('auth');
+Route::delete('/org/{id}','OrganizationController@destroy')->name('org.destroy')->middleware('auth');
+
+
+// USERINFO ROUTES
+// CREATE: Show the form to add an organization; process the form to add a new organization
+Route::get('/userinfo/create','UserInfoController@create')->name('userinfo.create')->middleware('auth');
+Route::post('/userinfo','UserInfoController@store')->name('userinfo.store')->middleware('auth');
+
+// READ: List all organizations owned/managed by a user
+Route::get('/userinfo/index','UserInfoController@index')->name('userinfo.index')->middleware('auth');
+
+// UPDATE: Show the edit form; process the form changes
+Route::get('/userinfo/{id}/edit','UserInfoController@edit')->name('userinfo.edit')->middleware('auth');
+Route::put('/userinfo/{id}','UserInfoController@update')->name('userinfo.update')->middleware('auth');
+
+// DELETE: Show the delete form; process the deletion
+Route::get('/userinfo/{id}/delete','UserInfoController@delete')->name('userinfo.delete')->middleware('auth');
+Route::delete('/userinfo/{id}','UserInfoController@destroy')->name('userinfo.destroy')->middleware('auth');

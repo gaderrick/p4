@@ -8,35 +8,7 @@ use Illuminate\Http\Request;
 
 class UserInfoController extends Controller
 {
-    public function list()
-    {
-        // first thing get current user's id from Auth and only show their user infos
-        $currentUserID=Auth::user()->id;
-        dump($currentUserID);
-    }
-
-    public function show($id)
-    {
-        $user_infos = Userinfo::orderBy('id')->get();
-        dump($id);
-        dump($user_infos);
-//        $books = Book::orderBy('title')->get();
-//        $newBooks = $books->sortByDesc('created_at')->take(3);
-//        $alert = $request->session()->get('alert');
-//
-//        return view('books.index')->with([
-//            'books' => $books,
-//            'newBooks' => $newBooks,
-//            'alert' => $alert
-//        ]);
-
-    }
-
-    public function new()
-    {
-    }
-
-    public function edit($id)
+    public function create()
     {
     }
 
@@ -71,6 +43,17 @@ class UserInfoController extends Controller
 //        ]);
     }
 
+    public function index()
+    {
+        // first thing get current user's id from Auth and only show their user infos
+        $currentUserID=Auth::user()->id;
+        dump($currentUserID);
+    }
+
+    public function edit($id)
+    {
+    }
+
     public function update(Request $request, $id)
     {
 //        $this->validate($request, [
@@ -96,6 +79,10 @@ class UserInfoController extends Controller
     }
 
     public function delete($id)
+    {
+    }
+
+    public function destroy($id)
     {
     }
 }

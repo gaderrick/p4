@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\User_info;
+use App\Userinfo;
 use Illuminate\Http\Request;
 
 class UserInfoController extends Controller
@@ -17,7 +17,7 @@ class UserInfoController extends Controller
 
     public function show($id)
     {
-        $user_infos = User_info::orderBy('id')->get();
+        $user_infos = Userinfo::orderBy('id')->get();
         dump($id);
         dump($user_infos);
 //        $books = Book::orderBy('title')->get();

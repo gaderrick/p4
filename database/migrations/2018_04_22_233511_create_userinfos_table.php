@@ -13,11 +13,10 @@ class CreateUserInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_infos', function (Blueprint $table) {
+        Schema::create('userinfos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('owner_user_id');
-            $table->integer('user_type');
-            $table->integer('organization_id');
+            $table->unsignedInteger('owner_user_id');
+            $table->unsignedInteger('user_type');
             $table->string('first_name', 80);
             $table->string('middle_name', 40);
             $table->string('last_name', 80);

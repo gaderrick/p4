@@ -25,10 +25,11 @@
         </div>
         <div style="display:table-cell; text-align: right; padding-right: 10px">
             @if (Auth::guest())
-                <a href="{{ url('/home') }}" style="color:white">HOME</a> |
+                <a href="{{ route('home') }}" style="color:white">HOME</a> |
                 <a href="{{ route('login') }}" style="color:white">LOGIN</a> |
                 <a href="{{ route('register') }}" style="color:white">REGISTER</a>
             @else
+                <a href="{{ url('/home') }}" style="color:white">HOME</a> |
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                    style="color:white">
                     <img src="{{ auth()->user()->avatar }}" alt="" width="30" class="img-circle">
@@ -53,7 +54,11 @@
         </div>
     </div>
 </div>
-
+@if (session('alert'))
+    <div class="col-md-12 flashAlert">
+        {{ session('alert') }}
+    </div>
+@endif
 <div class="content">
     @yield('content')
 </div>

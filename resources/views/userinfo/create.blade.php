@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('pagename')
-    Home
+    List of Organizations
 @endsection
 
 @section('content')
     <br><br><br>
-    This is the home page
+    This is the create userinfo list page
     <br><br><br>
-    <a href="{{ route('org.index') }}">List of organizations</a><br>
 @endsection

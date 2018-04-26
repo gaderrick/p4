@@ -8,8 +8,13 @@ use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
+        $alert = $request->session()->get('alert');
+
+        return view('organization.create')->with([
+           'alert' => $alert
+        ]);
     }
 
     public function store()
@@ -48,12 +53,15 @@ class OrganizationController extends Controller
         $currentUserID = Auth::user()->id;
         $organizations = Organization::where('owner_user_id', '=', $currentUserID)->orderBy('organization_name')->get();
 
-//      $alert = $request->session()->get('alert');
-//      The following line needs to go below in the return:
+        $a=$organizations->count();
+        if ($a==0) {
+            return redirect()->route('org.create')->with([
+                'alert'=>'No organizations are setup for this user'
+            ]);
+        }
 
-        return view('organization.list')->with([
+        return view('organization.index')->with([
             'organizations' => $organizations
-            // 'alert' => $alert
         ]);
     }
 

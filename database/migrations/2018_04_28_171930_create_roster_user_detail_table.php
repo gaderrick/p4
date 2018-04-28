@@ -13,13 +13,17 @@ class CreateRosterUserDetailTable extends Migration
      */
     public function up()
     {
+        # This is a pivot table
         Schema::create('roster_user_detail', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
+            $table->unsignedInteger('roster_id');
+            $table->unsignedInteger('user_detail_id');
+
             # Make foreign keys
-            $table->unsignedInteger('roster_id')->references('id')->on('rosters');
-            $table->unsignedInteger('user_detail_id')->references('id')->on('user_details');
+            $table->foreign('roster_id')->references('id')->on('rosters');
+            $table->foreign('user_detail_id')->references('id')->on('user_details');
         });
     }
 

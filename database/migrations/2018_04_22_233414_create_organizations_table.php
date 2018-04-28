@@ -28,7 +28,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('contact_name',200);
             $table->string('email',255);
             $table->string('phone',30);
-            $table->string('external_tracking_number',10);
+            $table->string('membership_number',10);
             $table->string('organization_magic_code',10);
             $table->timestamps();
             $table->softDeletes();

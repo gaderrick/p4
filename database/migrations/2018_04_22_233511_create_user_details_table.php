@@ -30,7 +30,8 @@ class CreateUserDetailsTable extends Migration
             $table->string('zip_code',10);
             $table->string('country',3);
             $table->date('date_of_birth');
-            $table->string('external_tracking_number',10);
+            $table->string('user_note',50);
+            $table->string('membership_number',10);
             $table->string('user_magic_code',10);
             $table->timestamps();
             $table->softDeletes();

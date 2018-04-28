@@ -29,7 +29,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('email',255);
             $table->string('phone',30);
             $table->string('external_tracking_number',10);
-            $table->string('organization_magic',10);
+            $table->string('organization_magic_code',10);
             $table->timestamps();
             $table->softDeletes();
         });

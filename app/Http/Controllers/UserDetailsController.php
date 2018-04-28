@@ -15,20 +15,28 @@ class UserDetailsController extends Controller
 
         return view('userdetail.create')->with([
             'alert' => $alert,
-            'alert_color' => $alert_color
+            'alert_color' => $alert_color,
+            'user_detail' => new UserDetail(),
         ]);
     }
 
     public function store(Request $request)
     {
-//        $this->validate($request, [
+        $this->validate($request, [
+            'user_type' => 'required|integer',
+            'first_name' => 'required|string|min:2|max:80',
+            'middle_name' => 'string|max:40',
+            'last_name' => 'required|string|min:2|max:80',
+
 //            'title' => 'required',
 //            'author' => 'required',
 //            'published_year' => 'required|digits:4|numeric',
 //            'cover_url' => 'required|url',
 //            'purchase_url' => 'required|url',
-//        ]);
-//
+        ]);
+
+        $table->unsignedInteger('user_id');
+
 //        $title = $request->input('title');
 //
 //        # Save the book to the database
@@ -53,14 +61,14 @@ class UserDetailsController extends Controller
     public function index()
     {
         // first thing get current user's id from Auth and only show their user infos
-        $currentUserID = Auth::user()->pluck('id');
-        $userinfos = UserDetail::where('user_id', '=', $currentUserID)->orderBy('last_name')->get();
+        $current_user = Auth::user()->pluck('id');
+        $userinfos = UserDetail::where('user_id', '=', $current_user)->orderBy('last_name')->get();
 
-        $cnt = $userinfos->count();
+        $count = $userinfos->count();
 
-        if ($cnt == 0) {
+        if ($count == 0) {
             return redirect()->route('userdetail.create')->with([
-                'alert' => 'No participants are setup for this user. You may set one up below.',
+                'alert' => 'No participants are paired with this user. You may create one up below.',
                 'alert_color' => 'yellow'
             ]);
         }

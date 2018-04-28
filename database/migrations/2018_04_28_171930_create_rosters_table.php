@@ -18,8 +18,8 @@ class CreateRostersTable extends Migration
             $table->unsignedInteger('organization_id');
             $table->unsignedInteger('roster_type_id');
             $table->string('roster_name',150);
-            $table->text('roster_description');
-            $table->string('roster_magic_code',10);
+            $table->text('roster_description')->nullable();
+            $table->string('roster_magic_code',10)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -46,4 +46,4 @@ __Delete__
 * List any divergences from PSR-1/PSR-2 and course guidelines on code style*
 
 ## Notes for instructor
-* In order for this project to work correctly (due to authentication w/ some social media oauth processes), you have to use `https://` vs. `http://`. 
+* In order for this project to work correctly (due to authentication w/ some of the social media oauth services), you have to use `https://` vs. `http://`. 

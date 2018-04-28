@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Userinfo;
+use App\UserDetail;
 use Illuminate\Http\Request;
 
-class UserInfoController extends Controller
+class UserDetailsController extends Controller
 {
     public function create(Request $request)
     {
         $alert = $request->session()->get('alert');
         $alert_color = $request->session()->get('alert_color');
 
-        return view('userinfo.create')->with([
+        return view('userdetail.create')->with([
             'alert' => $alert,
             'alert_color' => $alert_color
         ]);
@@ -53,19 +53,19 @@ class UserInfoController extends Controller
     public function index()
     {
         // first thing get current user's id from Auth and only show their user infos
-        $currentUserID = Auth::user()->id;
-        $userinfos = Userinfo::where('owner_user_id', '=', $currentUserID)->orderBy('last_name')->get();
+        $currentUserID = Auth::user()->pluck('id');
+        $userinfos = UserDetail::where('user_id', '=', $currentUserID)->orderBy('last_name')->get();
 
         $cnt = $userinfos->count();
 
         if ($cnt == 0) {
-            return redirect()->route('userinfo.create')->with([
+            return redirect()->route('userdetail.create')->with([
                 'alert' => 'No participants are setup for this user. You may set one up below.',
                 'alert_color' => 'yellow'
             ]);
         }
 
-        return view('userinfo.index')->with([
+        return view('userdetail.index')->with([
             'userinfos' => $userinfos
         ]);
     }

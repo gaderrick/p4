@@ -35,16 +35,16 @@ Route::delete('/org/{id}','OrganizationController@destroy')->name('org.destroy')
 
 // USERINFO ROUTES
 // CREATE: Show the form to add an organization; process the form to add a new organization
-Route::get('/userinfo/create','UserInfoController@create')->name('userinfo.create')->middleware('auth');
-Route::post('/userinfo','UserInfoController@store')->name('userinfo.store')->middleware('auth');
+Route::get('/userdetail/create','UserDetailsController@create')->name('userdetail.create')->middleware('auth');
+Route::post('/userdetail','UserDetailsController@store')->name('userdetail.store')->middleware('auth');
 
 // READ: List all organizations owned/managed by a user
-Route::get('/userinfo/index','UserInfoController@index')->name('userinfo.index')->middleware('auth');
+Route::get('/userdetail/index','UserDetailsController@index')->name('userdetail.index')->middleware('auth');
 
 // UPDATE: Show the edit form; process the form changes
-Route::get('/userinfo/{id}/edit','UserInfoController@edit')->name('userinfo.edit')->middleware('auth');
-Route::put('/userinfo/{id}','UserInfoController@update')->name('userinfo.update')->middleware('auth');
+Route::get('/userdetail/{id}/edit','UserDetailsController@edit')->name('userdetail.edit')->middleware('auth');
+Route::put('/userdetail/{id}','UserDetailsController@update')->name('userdetail.update')->middleware('auth');
 
 // DELETE: Show the delete form; process the deletion
-Route::get('/userinfo/{id}/delete','UserInfoController@delete')->name('userinfo.delete')->middleware('auth');
-Route::delete('/userinfo/{id}','UserInfoController@destroy')->name('userinfo.destroy')->middleware('auth');
+Route::get('/userdetail/{id}/delete','UserDetailsController@delete')->name('userdetail.delete')->middleware('auth');
+Route::delete('/userdetail/{id}','UserDetailsController@destroy')->name('userdetail.destroy')->middleware('auth');

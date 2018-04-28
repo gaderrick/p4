@@ -52,8 +52,8 @@ class OrganizationController extends Controller
 
     public function index()
     {
-        $currentUserID = Auth::user()->id;
-        $organizations = Organization::where('owner_user_id', '=', $currentUserID)->orderBy('organization_name')->get();
+        $currentUserID = Auth::user()->pluck('id');
+        $organizations = Organization::where('user_id', '=', $currentUserID)->orderBy('organization_name')->get();
 
         $cnt=$organizations->count();
         if ($cnt==0) {

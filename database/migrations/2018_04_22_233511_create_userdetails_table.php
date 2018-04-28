@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserInfosTable extends Migration
+class CreateUserDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateUserInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('userinfos', function (Blueprint $table) {
+        Schema::create('user_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('owner_user_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('user_type');
             $table->string('first_name', 80);
             $table->string('middle_name', 40);
@@ -31,7 +31,7 @@ class CreateUserInfosTable extends Migration
             $table->string('country',3);
             $table->date('date_of_birth');
             $table->string('external_tracking_number',10);
-            $table->string('user_signup_identifier',10);
+            $table->string('user_magic_code',10);
             $table->timestamps();
             $table->softDeletes();
         });

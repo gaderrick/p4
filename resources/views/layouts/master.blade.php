@@ -20,7 +20,7 @@
     <div style="display:table-row">
         <div style="display:table-cell; padding-left: 10px">
             <h3>
-                Meet Organizer
+                Roster Maker
             </h3>
         </div>
         <div style="display:table-cell; text-align: right; padding-right: 10px">

@@ -15,7 +15,7 @@ class CreateOrganizationsTable extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('owner_user_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('organization_type');
             $table->unsignedInteger('organization_category');
             $table->string('organization_name', 150);
@@ -29,7 +29,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('email',255);
             $table->string('phone',30);
             $table->string('external_tracking_number',10);
-            $table->string('organization_signup_identifier',10);
+            $table->string('organization_magic',10);
             $table->timestamps();
             $table->softDeletes();
         });

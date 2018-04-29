@@ -28,3 +28,93 @@
         @include('modules.error-field', ['field' => 'last_name'])
     </div>
 </div>
+
+
+<div class="form-group">
+    <label for='sex' class="col-md-12 control-label">Sex</label>
+    <div class="col-md-12">
+        <select id='author_id' name='author_id' class="form-control">
+            <option value=''>Choose one...</option>
+            <option value='F' {{ ($user_detail->sex == 'F') ? 'selected' : '' }}>Female</option>
+            <option value='M' {{ ($user_detail->sex == 'M') ? 'selected' : '' }}>Male</option>
+        </select>
+        @include('modules.error-field', ['field' => 'sex'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='email' class="col-md-12 control-label">Email</label>
+    <div class="col-md-12">
+        <input id='email' type='text' class="form-control" name='email' value='{{ old('email', $user_detail->email) }}'>
+        @include('modules.error-field', ['field' => 'email'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='phone' class="col-md-12 control-label">Phone</label>
+    <div class="col-md-12">
+        <input id='phone' type='text' class="form-control" name='phone' value='{{ old('phone', $user_detail->phone) }}'>
+        @include('modules.error-field', ['field' => 'phone'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='cell_phone' class="col-md-12 control-label">Cell Phone</label>
+    <div class="col-md-12">
+        <input id="cell_phone" type='text' class="form-control" name="cell_phone" value='{{ old('cell_phone', $user_detail->cell_phone) }}'>
+        @include('modules.error-field', ['field' => 'cell_phone'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='street_address' class="col-md-12 control-label">Street Address</label>
+    <div class="col-md-12">
+        <input id='street_address' type='text' class="form-control" name='street_address' value='{{ old('street_address', $user_detail->street_address) }}'>
+        @include('modules.error-field', ['field' => 'street_address'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='city' class="col-md-12 control-label">City</label>
+    <div class="col-md-12">
+        <input id='city' type='text' class="form-control" name='city' value='{{ old('city', $user_detail->city) }}'>
+        @include('modules.error-field', ['field' => 'city'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='state' class="col-md-12 control-label">State</label>
+    <div class="col-md-12">
+        <input id='state' type='text' class="form-control" name='state' value='{{ old('state', $user_detail->state) }}'>
+        @include('modules.error-field', ['field' => 'state'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='zip_code' class="col-md-12 control-label">Zip Code</label>
+    <div class="col-md-12">
+        <input id='zip_code' type='text' class="form-control" name='zip_code' value='{{ old('zip_code', $user_detail->zip_code) }}'>
+        @include('modules.error-field', ['field' => 'zip_code'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='country' class="col-md-12 control-label">Country</label>
+    <div class="col-md-12">
+        <input id='country' type='text' class="form-control" name='country' value='{{ old('country', $user_detail->country) }}'>
+        @include('modules.error-field', ['field' => 'country'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='date_of_birth' class="col-md-12 control-label">Date of Birth</label>
+    <div class="col-md-12">
+        <input id='date_of_birth' type='text' class="form-control" name='date_of_birth' value='{{ old('date_of_birth', $user_detail->date_of_birth) }}'>
+        @include('modules.error-field', ['field' => 'date_of_birth'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='user_note' class="col-md-12 control-label">User Note</label>
+    <div class="col-md-12">
+        <input id='user_note' type='text' class="form-control" name='user_note' value='{{ old('user_note', $user_detail->user_note) }}'>
+        @include('modules.error-field', ['field' => 'user_note'])
+    </div>
+</div>
+<div class="form-group">
+    <label for='membership_number' class="col-md-12 control-label">Membership Number</label>
+    <div class="col-md-12">
+        <input id='membership_number' type='text' class="form-control" name='membership_number' value='{{ old('membership_number', $user_detail->membership_number) }}'>
+        @include('modules.error-field', ['field' => 'membership_number'])
+    </div>
+</div>

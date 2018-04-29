@@ -51,7 +51,7 @@ class UserDetailsController extends Controller
 
         # Save the user details to the database
         $user_detail = new UserDetail();
-        $user_detail->user_id = auth()->user()->id;;
+        $user_detail->user_id = auth()->user()->id;
         $user_detail->user_type = $request->user_type;
         $user_detail->first_name = $request->first_name;
         $user_detail->middle_name = $request->middle_name;

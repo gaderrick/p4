@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/userdetail/create','UserDetailsController@create')->name('userdetail.create')->middleware('auth');
 Route::post('/userdetail','UserDetailsController@store')->name('userdetail.store')->middleware('auth');
 
-// READ: List all organizations owned/managed by a user
+// READ: List all participants owned/managed by a user
 Route::get('/userdetail/index','UserDetailsController@index')->name('userdetail.index')->middleware('auth');
 
 // UPDATE: Show the edit form; process the form changes

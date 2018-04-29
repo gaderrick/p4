@@ -11,7 +11,7 @@
                 <form method="POST" action="{{ route('userdetail.store') }}">
                     {{ csrf_field() }}
 
-                    @include('userdetail.userdetailFormInputs');
+                    @include('userdetail.userdetailFormInputs')
 
                     <div class="form-group">
                         <div class="col-md-12">

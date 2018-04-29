@@ -45,7 +45,7 @@ class UserDetailsController extends Controller
         $this->validate($request, [
             'user_type' => 'required|integer',
             'first_name' => 'required|string|min:2|max:80',
-            'middle_name' => 'string|max:40',
+            'middle_name' => 'string|nullable|max:40',
             'last_name' => 'required|string|min:2|max:80',
         ]);
 
@@ -63,7 +63,7 @@ class UserDetailsController extends Controller
 //        # Log::info('Saved user details for ' . $user_detail->user_id);
 
 //        # Send the user back to the list of participants page w/ success message
-        return redirect('userdetail.index')->with([
+        return redirect(route('userdetail.index'))->with([
             'alert' => 'Saved user details for ' . $user_detail->first_name . ' ' . $user_detail->last_name,
             'alert_color' => 'green'
         ]);
@@ -80,7 +80,7 @@ class UserDetailsController extends Controller
 
         # Handle the case where we can't find the given book
         if (!$user_detail) {
-            return redirect('home')->with([
+            return redirect(route('home'))->with([
                 'alert' => 'No matching participant was found.',
                 'alert_color' => 'yellow'
             ]);
@@ -96,7 +96,7 @@ class UserDetailsController extends Controller
         $this->validate($request, [
             'user_type' => 'required|integer',
             'first_name' => 'required|string|min:2|max:80',
-            'middle_name' => 'string|max:40',
+            'middle_name' => 'string|nullable|max:40',
             'last_name' => 'required|string|min:2|max:80',
         ]);
 

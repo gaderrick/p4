@@ -5,11 +5,19 @@
 @endsection
 
 @section('content')
+    <a href='{{ route('userdetail.create') }}'>Add a new participant</a><br>
+    <br>
+    or
+    <br>
     @foreach($user_details as $user_detail)
         Edit participant: <a href='{{ route('userdetail.edit', $user_detail->id) }}'>{{ $user_detail->first_name }} {{$user_detail->last_name }}</a><br>
     @endforeach
     <br>
-    <div>
-        <a href='{{ route('userdetail.create') }}'>Or add a new participant</a>
+    or
+    <br>
+    @foreach($user_details as $user_detail)
+        Delete participant: <a href='{{ route('userdetail.delete', $user_detail->id) }}'>{{ $user_detail->first_name }} {{$user_detail->last_name }}</a><br>
+    @endforeach
+
     </div>
 @endsection

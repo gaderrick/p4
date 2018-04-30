@@ -116,7 +116,7 @@ class UserDetailsController extends Controller
             $user_detail = null;
         }
 
-        # Handle the case where we can't find the given book
+        # Handle the case where we can't find the given user_detail
         if (!$user_detail) {
             return redirect(route('home'))->with([
                 'alert' => 'No matching participant was found.',
@@ -183,9 +183,41 @@ class UserDetailsController extends Controller
 
     public function delete($id)
     {
+        $current_user = auth()->user()->id;
+        $user_detail = UserDetail::find($id);
+
+        if (!($user_detail && $user_detail->user_id == $current_user)) {
+            $user_detail = null;
+        }
+
+        # Handle the case where we can't find the given user_detail
+        if (!$user_detail) {
+            return redirect(route('home'))->with([
+                'alert' => 'No matching participant was found.',
+                'alert_color' => 'yellow'
+            ]);
+        }
+
+        return view('userdetail.delete')->with([
+            'user_detail' => $user_detail,
+        ]);
+
     }
 
     public function destroy($id)
     {
+        $user_detail = UserDetail::find($id);
+
+        # Before we delete the book we have to delete any tag associations
+        # todo: detach the roster_user_detail info
+        # $book->tags()->detach();
+
+        # todo: look into how to do soft deletes; maybe add # to user_id?
+        $user_detail->delete();
+
+        return redirect(route('userdetail.index'))->with([
+            'alert' => 'Participant '.$user_detail->first_name.' '.$user_detail->last_name.' was removed.',
+            'alert_color' => 'red'
+        ]);
     }
 }

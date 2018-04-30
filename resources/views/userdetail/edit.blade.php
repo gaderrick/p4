@@ -12,6 +12,7 @@
                     {{ csrf_field() }}
                     {{ method_field('put') }}
 
+                    <div style="text-align: center"><h3>Update an Existing Participant</h3></div>
                     @include('userdetail.userdetailFormInputs')
 
                     <div class="form-group">

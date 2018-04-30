@@ -44,7 +44,8 @@ __Delete__
   + List of state's and their abbreviations from [pastebin.com](https://pastebin.com/eJvwuHqC)
   + Looked up how to [pass a variable parameter](https://stackoverflow.com/questions/34556484/laravel-5-2-named-route-usage-with-variable-parameter) to a named route in a hyperlink.
   + Looked up how to [disable auto insert](https://stackoverflow.com/questions/19937565/disable-laravels-eloquent-timestamps) of Laravel timestamp fields
-
+  + Looked up how to validate email addresses in [Laravel](https://laravel.com/docs/5.0/validation)
+  + Leveraged code to create a [random 10 character string](http://www.xeweb.net/2011/02/11/generate-a-random-string-a-z-0-9-in-php/)
 ## Code style divergences
 * List any divergences from PSR-1/PSR-2 and course guidelines on code style*
 

@@ -1,12 +1,17 @@
 <div style="text-align: center">* Required fields</div>
-
 <div class="form-group">
     <label for='user_type' class="col-md-12 control-label">* User Type</label>
     <div class="col-md-12">
-        <input id='user_type' type='text' class="form-control" name='user_type' value='{{ old('user_type', $user_detail->user_type) }}'>
+        <select id='user_type' name='user_type' class="form-control">
+            <option value=''>Choose one...</option>
+            @foreach($userTypesForDropdown as $id => $userTypeDescription)
+                <option value='{{ $id }}' {{ ($user_detail->user_type == $id) ? 'selected' : '' }}>{{ $userTypeDescription }}</option>
+            @endforeach
+        </select>
         @include('modules.error-field', ['field' => 'user_type'])
     </div>
 </div>
+
 <div class="form-group">
     <label for='first_name' class="col-md-12 control-label">* First Name</label>
     <div class="col-md-12">
@@ -28,12 +33,10 @@
         @include('modules.error-field', ['field' => 'last_name'])
     </div>
 </div>
-
-
 <div class="form-group">
     <label for='sex' class="col-md-12 control-label">Sex</label>
     <div class="col-md-12">
-        <select id='author_id' name='author_id' class="form-control">
+        <select id='sex' name='sex' class="form-control">
             <option value=''>Choose one...</option>
             <option value='F' {{ ($user_detail->sex == 'F') ? 'selected' : '' }}>Female</option>
             <option value='M' {{ ($user_detail->sex == 'M') ? 'selected' : '' }}>Male</option>
@@ -76,13 +79,20 @@
         @include('modules.error-field', ['field' => 'city'])
     </div>
 </div>
+
 <div class="form-group">
     <label for='state' class="col-md-12 control-label">State</label>
     <div class="col-md-12">
-        <input id='state' type='text' class="form-control" name='state' value='{{ old('state', $user_detail->state) }}'>
+        <select id='state' name='state' class="form-control">
+            <option value=''>Choose one...</option>
+            @foreach($statesForDropdown as $stateAbbrev => $stateName)
+                <option value='{{ $stateAbbrev }}' {{ ($user_detail->state == $stateAbbrev) ? 'selected' : '' }}>{{ $stateName }}</option>
+            @endforeach
+        </select>
         @include('modules.error-field', ['field' => 'state'])
     </div>
 </div>
+
 <div class="form-group">
     <label for='zip_code' class="col-md-12 control-label">Zip Code</label>
     <div class="col-md-12">

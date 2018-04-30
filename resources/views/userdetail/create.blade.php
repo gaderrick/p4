@@ -11,6 +11,7 @@
                 <form method="POST" action="{{ route('userdetail.store') }}">
                     {{ csrf_field() }}
 
+                    <div style="text-align: center"><h3>Create a New Participant</h3></div>
                     @include('userdetail.userdetailFormInputs')
 
                     <div class="form-group">

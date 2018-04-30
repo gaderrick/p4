@@ -26,18 +26,13 @@ class CreateUserDetailsTable extends Migration
             $table->string('country',3)->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('user_note',50)->nullable();
-            $table->string('membership_number',10)->nullable();
+            $table->string('membership_number',20)->nullable();
             $table->string('user_magic_code',10)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('user_details');

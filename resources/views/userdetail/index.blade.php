@@ -10,14 +10,7 @@
     or
     <br>
     @foreach($user_details as $user_detail)
-        Edit participant: <a href='{{ route('userdetail.edit', $user_detail->id) }}'>{{ $user_detail->first_name }} {{$user_detail->last_name }}</a><br>
+        Edit participant: <a href='{{ route('userdetail.edit', $user_detail->id) }}'>{{ $user_detail->first_name }} {{$user_detail->last_name }}</a> or
+        <a href='{{ route('userdetail.delete', $user_detail->id) }}'>(DELETE)</a><br>
     @endforeach
-    <br>
-    or
-    <br>
-    @foreach($user_details as $user_detail)
-        Delete participant: <a href='{{ route('userdetail.delete', $user_detail->id) }}'>{{ $user_detail->first_name }} {{$user_detail->last_name }}</a><br>
-    @endforeach
-
-    </div>
 @endsection

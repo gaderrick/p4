@@ -5,7 +5,7 @@
         <select id='user_type' name='user_type' class="form-control">
             <option value=''>Choose one...</option>
             @foreach($userTypesForDropdown as $id => $userTypeDescription)
-                <option value='{{ $id }}' {{ ($user_detail->user_type == $id) ? 'selected' : '' }}>{{ $userTypeDescription }}</option>
+                <option value='{{ $id }}' {{ (old('user_type',$user_detail->user_type) == $id) ? 'selected' : '' }}>{{ $userTypeDescription }}</option>
             @endforeach
         </select>
         @include('modules.error-field', ['field' => 'user_type'])
@@ -38,8 +38,8 @@
     <div class="col-md-12">
         <select id='sex' name='sex' class="form-control">
             <option value=''>Choose one...</option>
-            <option value='F' {{ ($user_detail->sex == 'F') ? 'selected' : '' }}>Female</option>
-            <option value='M' {{ ($user_detail->sex == 'M') ? 'selected' : '' }}>Male</option>
+            <option value='F' {{ (old('sex',$user_detail->sex) == 'F') ? 'selected' : '' }}>Female</option>
+            <option value='M' {{ (old('sex',$user_detail->sex) == 'M') ? 'selected' : '' }}>Male</option>
         </select>
         @include('modules.error-field', ['field' => 'sex'])
     </div>
@@ -86,7 +86,7 @@
         <select id='state' name='state' class="form-control">
             <option value=''>Choose one...</option>
             @foreach($statesForDropdown as $stateAbbrev => $stateName)
-                <option value='{{ $stateAbbrev }}' {{ ($user_detail->state == $stateAbbrev) ? 'selected' : '' }}>{{ $stateName }}</option>
+                <option value='{{ $stateAbbrev }}' {{ (old('state',$user_detail->state) == $stateAbbrev) ? 'selected' : '' }}>{{ $stateName }}</option>
             @endforeach
         </select>
         @include('modules.error-field', ['field' => 'state'])

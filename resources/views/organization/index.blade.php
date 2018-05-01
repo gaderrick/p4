@@ -5,7 +5,12 @@
 @endsection
 
 @section('content')
-    <br><br><br>
-    This is the organization list page
-    <br><br><br>
+    <a href='{{ route('org.create') }}'>Add a new organization</a><br>
+    <br>
+    or
+    <br>
+    @foreach($organizations as $organization)
+        Edit organization: <a href='{{ route('org.edit', $organization->id) }}'>{{ $organization->organization_name }}</a> or
+        <a href='{{ route('org.delete', $organization->id) }}'>(DELETE)</a><br>
+    @endforeach
 @endsection

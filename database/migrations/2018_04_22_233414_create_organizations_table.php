@@ -28,7 +28,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('contact_name',200)->nullable();
             $table->string('email',255)->nullable();
             $table->string('phone',30)->nullable();
-            $table->string('membership_number',10)->nullable();
+            $table->string('membership_number',20)->nullable();
             $table->string('organization_magic_code',10)->nullable();
             $table->timestamps();
             $table->softDeletes();

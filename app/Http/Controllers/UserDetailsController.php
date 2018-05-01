@@ -47,23 +47,23 @@ class UserDetailsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'user_type' => 'required|integer',
-            'first_name' => 'required|string|min:2|max:80',
-            'middle_name' => 'string|nullable|max:40',
-            'last_name' => 'required|string|min:2|max:80',
-            'sex' => 'string|nullable|max:1',
-            'email' => 'email|nullable|max:255',
-            'phone' => 'string|nullable|max:30',
-            'cell_phone' => 'string|nullable|max:30',
-            'street_address' => 'string|nullable|max:150',
-            'city' => 'string|nullable|max:100',
-            'state' => 'string|nullable|max:2',
-            'zip_code' => 'string|nullable|max:10',
-            'country' => 'string|nullable|max:3',
-            'date_of_birth' => 'date|date_format:Y-m-d|nullable',
-            'user_note' => 'string|nullable|max:50',
-            'membership_number' => 'string|nullable|max:20'
-        ]);
+        'user_type' => 'required|integer',
+        'first_name' => 'required|string|min:2|max:80',
+        'middle_name' => 'string|nullable|max:40',
+        'last_name' => 'required|string|min:2|max:80',
+        'sex' => 'string|nullable|max:1',
+        'email' => 'email|nullable|max:255',
+        'phone' => 'string|nullable|max:30',
+        'cell_phone' => 'string|nullable|max:30',
+        'street_address' => 'string|nullable|max:150',
+        'city' => 'string|nullable|max:100',
+        'state' => 'string|nullable|max:2',
+        'zip_code' => 'string|nullable|max:10',
+        'country' => 'string|nullable|max:3',
+        'date_of_birth' => 'date|date_format:Y-m-d|nullable',
+        'user_note' => 'string|nullable|max:50',
+        'membership_number' => 'string|nullable|max:20'
+    ]);
 
         // Magic code generator for user_details
         $magicCode = "";
@@ -201,7 +201,6 @@ class UserDetailsController extends Controller
         return view('userdetail.delete')->with([
             'user_detail' => $user_detail,
         ]);
-
     }
 
     public function destroy($id)
@@ -216,7 +215,7 @@ class UserDetailsController extends Controller
         $user_detail->delete();
 
         return redirect(route('userdetail.index'))->with([
-            'alert' => 'Participant '.$user_detail->first_name.' '.$user_detail->last_name.' was removed.',
+            'alert' => 'Participant '.$user_detail->first_name.' '.$user_detail->last_name.' was deleted.',
             'alert_color' => 'red'
         ]);
     }

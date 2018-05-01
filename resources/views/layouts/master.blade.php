@@ -29,7 +29,9 @@
                 <a href="{{ route('login') }}" style="color:white">LOGIN</a> |
                 <a href="{{ route('register') }}" style="color:white">REGISTER</a>
             @else
-                <a href="{{ url('/home') }}" style="color:white">HOME</a> |
+                <a href="{{ route('home') }}" style="color:white">HOME</a> |
+                <a href="{{ route('userdetail.index') }}" style="color:white">PARTICIPANTS</a> |
+                <a href="{{ route('org.index') }}" style="color:white">ORGANIZATIONS</a> |
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                    style="color:white">
                     <img src="{{ auth()->user()->avatar }}" alt="" width="30" class="img-circle">

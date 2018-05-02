@@ -59,9 +59,9 @@ class UserDetailsController extends Controller
         'cell_phone' => 'string|nullable|max:30',
         'street_address' => 'string|nullable|max:150',
         'city' => 'string|nullable|max:100',
-        'state' => 'string|nullable|max:2',
+        'state_id' => 'integer|nullable',
         'zip_code' => 'string|nullable|max:10',
-        'country' => 'string|nullable|max:3',
+        'country_id' => 'integer|nullable',
         'date_of_birth' => 'date|date_format:Y-m-d|nullable',
         'user_note' => 'string|nullable|max:50',
         'membership_number' => 'string|nullable|max:20'
@@ -89,9 +89,9 @@ class UserDetailsController extends Controller
         $user_detail->cell_phone = $request->cell_phone;
         $user_detail->street_address = $request->street_address;
         $user_detail->city = $request->city;
-        $user_detail->state = $request->state;
+        $user_detail->state_id = $request->state_id;
         $user_detail->zip_code = $request->zip_code;
-        $user_detail->country = $request->country;
+        $user_detail->country_id = $request->country_id;
         $user_detail->date_of_birth = $request->date_of_birth;
         $user_detail->user_note = $request->user_note;
         $user_detail->membership_number = $request->membership_number;
@@ -147,9 +147,9 @@ class UserDetailsController extends Controller
             'cell_phone' => 'string|nullable|max:30',
             'street_address' => 'string|nullable|max:150',
             'city' => 'string|nullable|max:100',
-            'state' => 'string|nullable|max:2',
+            'state_id' => 'integer|nullable',
             'zip_code' => 'string|nullable|max:10',
-            'country' => 'string|nullable|max:3',
+            'country_id' => 'integer|nullable',
             'date_of_birth' => 'date|date_format:Y-m-d|nullable',
             'user_note' => 'string|nullable|max:50',
             'membership_number' => 'string|nullable|max:20'
@@ -169,9 +169,9 @@ class UserDetailsController extends Controller
         $user_detail->cell_phone = $request->cell_phone;
         $user_detail->street_address = $request->street_address;
         $user_detail->city = $request->city;
-        $user_detail->state = $request->state;
+        $user_detail->state_id = $request->state_id;
         $user_detail->zip_code = $request->zip_code;
-        $user_detail->country = $request->country;
+        $user_detail->country_id = $request->country_id;
         $user_detail->date_of_birth = $request->date_of_birth;
         $user_detail->user_note = $request->user_note;
         $user_detail->membership_number = $request->membership_number;

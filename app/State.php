@@ -8,11 +8,11 @@ class State extends Model
 {
     public static function getForDropdown()
     {
-        $states = self::orderBy('state_abbreviation')->get();
+        $states = self::orderBy('id')->get();
 
         $statesForDropdown = [];
         foreach ($states as $state) {
-            $statesForDropdown[$state->state_abbreviation] = $state->state_name;
+            $statesForDropdown[$state->id] = $state->state_name;
         }
 
         return $statesForDropdown;

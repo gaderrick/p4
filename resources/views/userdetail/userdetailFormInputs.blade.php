@@ -81,15 +81,15 @@
 </div>
 
 <div class="form-group">
-    <label for='state' class="col-md-12 control-label">State</label>
+    <label for='state_id' class="col-md-12 control-label">State</label>
     <div class="col-md-12">
-        <select id='state' name='state' class="form-control">
+        <select id='state_id' name='state_id' class="form-control">
             <option value=''>Choose one...</option>
-            @foreach($statesForDropdown as $stateAbbrev => $stateName)
-                <option value='{{ $stateAbbrev }}' {{ (old('state',$user_detail->state) == $stateAbbrev) ? 'selected' : '' }}>{{ $stateName }}</option>
+            @foreach($statesForDropdown as $id => $stateName)
+                <option value='{{ $id }}' {{ (old('state_id',$user_detail->state_id) == $id) ? 'selected' : '' }}>{{ $stateName }}</option>
             @endforeach
         </select>
-        @include('modules.error-field', ['field' => 'state'])
+        @include('modules.error-field', ['field' => 'state_id'])
     </div>
 </div>
 <div class="form-group">
@@ -100,15 +100,15 @@
     </div>
 </div>
 <div class="form-group">
-    <label for='country' class="col-md-12 control-label">Country</label>
+    <label for='country_id' class="col-md-12 control-label">Country</label>
     <div class="col-md-12">
-        <select id='country' name='country' class="form-control">
+        <select id='country_id' name='country_id' class="form-control">
             <option value=''>Choose one...</option>
-            @foreach($countriesForDropdown as $countryAbbrev => $countryName)
-                <option value='{{ $countryAbbrev }}' {{ (old('country',$user_detail->country) == $countryAbbrev) ? 'selected' : '' }}>{{ $countryName }}</option>
+            @foreach($countriesForDropdown as $id => $countryName)
+                <option value='{{ $id }}' {{ (old('country',$user_detail->country_id) == $id) ? 'selected' : '' }}>{{ $countryName }}</option>
             @endforeach
         </select>
-        @include('modules.error-field', ['field' => 'country'])
+        @include('modules.error-field', ['field' => 'country_id'])
     </div>
 </div>
 <div class="form-group">

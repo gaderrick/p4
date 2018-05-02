@@ -53,9 +53,9 @@ class OrganizationController extends Controller
             'organization_name' => 'required|string|min:2|max:150',
             'street_address' => 'string|nullable|max:150',
             'city' => 'string|nullable|max:100',
-            'state' => 'string|nullable|max:2',
+            'state_id' => 'integer|nullable',
             'zip_code' => 'string|nullable|max:10',
-            'country' => 'string|nullable|max:2',
+            'country_id' => 'integer|nullable',
             'website' => 'string|nullable|max:250',
             'contact_name' => 'string|nullable|min:2|max:200',
             'email' => 'email|nullable|max:255',
@@ -81,9 +81,9 @@ class OrganizationController extends Controller
         $organization->organization_name = $request->organization_name;
         $organization->street_address = $request->street_address;
         $organization->city = $request->city;
-        $organization->state = $request->state;
+        $organization->state_id = $request->state_id;
         $organization->zip_code = $request->zip_code;
-        $organization->country = $request->country;
+        $organization->country_id = $request->country_id;
         $organization->website = $request->website;
         $organization->contact_name = $request->contact_name;
         $organization->email = $request->email;
@@ -136,9 +136,9 @@ class OrganizationController extends Controller
             'organization_name' => 'required|string|min:2|max:150',
             'street_address' => 'string|nullable|max:150',
             'city' => 'string|nullable|max:100',
-            'state' => 'string|nullable|max:2',
+            'state_id' => 'integer|nullable',
             'zip_code' => 'string|nullable|max:10',
-            'country' => 'string|nullable|max:2',
+            'country_id' => 'integer|nullable',
             'website' => 'string|nullable|max:250',
             'contact_name' => 'string|nullable|min:2|max:200',
             'email' => 'email|nullable|max:255',
@@ -154,9 +154,9 @@ class OrganizationController extends Controller
         $organization->organization_name = $request->organization_name;
         $organization->street_address = $request->street_address;
         $organization->city = $request->city;
-        $organization->state = $request->state;
+        $organization->state_id = $request->state_id;
         $organization->zip_code = $request->zip_code;
-        $organization->country = $request->country;
+        $organization->country_id = $request->country_id;
         $organization->website = $request->website;
         $organization->contact_name = $request->contact_name;
         $organization->email = $request->email;

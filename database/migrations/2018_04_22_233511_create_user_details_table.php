@@ -21,9 +21,9 @@ class CreateUserDetailsTable extends Migration
             $table->string('cell_phone',30)->nullable();
             $table->string('street_address',150)->nullable();
             $table->string('city',100)->nullable();
-            $table->string('state',2)->nullable();
+            $table->unsignedInteger('state_id')->nullable();
             $table->string('zip_code',10)->nullable();
-            $table->string('country',2)->nullable();
+            $table->unsignedInteger('country_id')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('user_note',50)->nullable();
             $table->string('membership_number',20)->nullable();

@@ -8,11 +8,11 @@ class Country extends Model
 {
     public static function getForDropdown()
     {
-        $countries = self::orderBy('country_name')->get();
+        $countries = self::orderBy('id')->get();
 
         $countriesForDropdown = [];
         foreach ($countries as $country) {
-            $countriesForDropdown[$country->country_abbreviation] = $country->country_name;
+            $countriesForDropdown[$country->id] = $country->country_name;
         }
 
         return $countriesForDropdown;

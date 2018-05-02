@@ -61,7 +61,12 @@
 <div class="form-group">
     <label for='country' class="col-md-12 control-label">Country</label>
     <div class="col-md-12">
-        <input id='country' type='text' class="form-control" name='country' value='{{ old('country', $organization->country) }}'>
+        <select id='country' name='country' class="form-control">
+            <option value=''>Choose one...</option>
+            @foreach($countriesForDropdown as $countryAbbrev => $countryName)
+                <option value='{{ $countryAbbrev }}' {{ (old('country',$organization->country) == $countryAbbrev) ? 'selected' : '' }}>{{ $countryName }}</option>
+            @endforeach
+        </select>
         @include('modules.error-field', ['field' => 'country'])
     </div>
 </div>

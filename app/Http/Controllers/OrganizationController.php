@@ -6,6 +6,7 @@ use Auth;
 use App\OrganizationType;
 use App\Organization;
 use App\State;
+use App\Country;
 use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
@@ -37,6 +38,7 @@ class OrganizationController extends Controller
         return view('organization.create')->with([
             'organizationTypesForDropdown' => OrganizationType::getForDropdown(),
             'statesForDropdown' => State::getForDropdown(),
+            'countriesForDropdown' => Country::getForDropdown(),
             'organization' => new Organization(),
             'alert' => $alert,
             'alert_color' => $alert_color
@@ -53,7 +55,7 @@ class OrganizationController extends Controller
             'city' => 'string|nullable|max:100',
             'state' => 'string|nullable|max:2',
             'zip_code' => 'string|nullable|max:10',
-            'country' => 'string|nullable|max:3',
+            'country' => 'string|nullable|max:2',
             'website' => 'string|nullable|max:250',
             'contact_name' => 'string|nullable|min:2|max:200',
             'email' => 'email|nullable|max:255',
@@ -121,6 +123,7 @@ class OrganizationController extends Controller
         return view('organization.edit')->with([
             'organizationTypesForDropdown' => OrganizationType::getForDropdown(),
             'statesForDropdown' => State::getForDropdown(),
+            'countriesForDropdown' => Country::getForDropdown(),
             'organization' => $organization
         ]);
     }
@@ -135,7 +138,7 @@ class OrganizationController extends Controller
             'city' => 'string|nullable|max:100',
             'state' => 'string|nullable|max:2',
             'zip_code' => 'string|nullable|max:10',
-            'country' => 'string|nullable|max:3',
+            'country' => 'string|nullable|max:2',
             'website' => 'string|nullable|max:250',
             'contact_name' => 'string|nullable|min:2|max:200',
             'email' => 'email|nullable|max:255',

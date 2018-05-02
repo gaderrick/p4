@@ -9,7 +9,7 @@ class CreateStatesTable extends Migration
     public function up()
     {
         Schema::create('states', function (Blueprint $table) {
-            $table->char('state_abbreviation', 2);
+            $table->string('state_abbreviation', 2)->primary();
             $table->string('state_name', 30);
         });
     }

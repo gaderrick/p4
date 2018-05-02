@@ -8,9 +8,9 @@ class OrganizationsTableSeeder extends Seeder
     public function run()
     {
         $organizations = [
-            [1,1,1,'Trampoline and Tumbling Express','101 Steen Dr.','Lafayette','LA',70508,'USA','http://www.tntexpress.com','Tara Guidry','tntexpress@cox.net','337-988-5317','A0001',''],
-            [1,1,1,'Acadiana Gymnastics','PO Box 60085','Lafayette','LA',70596,'USA','https://www.acadianagymnastics.com','Chase Hardy','gymney@gmail.com','337-988-3547','A0002',''],
-            [1,1,1,'Elmwood Gymnastics Academy','700 C ElmwoodPark Blvd.','Harahan','LA',70123,'USA','http://www.ochsnerfitness.com/club/scripts/section/section.asp?NS=GYMNASTIC','Toni Mortillaro','Hillaryhebert@hotmail.com','504-733-4496','A0003','']
+            [1,1,1,'Trampoline and Tumbling Express','101 Steen Dr.','Lafayette','LA',70508,'US','http://www.tntexpress.com','Tara Guidry','tntexpress@cox.net','337-988-5317','A0001',''],
+            [1,1,1,'Acadiana Gymnastics','PO Box 60085','Lafayette','LA',70596,'US','https://www.acadianagymnastics.com','Chase Hardy','gymney@gmail.com','337-988-3547','A0002',''],
+            [1,1,1,'Elmwood Gymnastics Academy','700 C ElmwoodPark Blvd.','Harahan','LA',70123,'US','http://www.ochsnerfitness.com/club/scripts/section/section.asp?NS=GYMNASTIC','Toni Mortillaro','Hillaryhebert@hotmail.com','504-733-4496','A0003','']
 
         ];
         $count = count($organizations);

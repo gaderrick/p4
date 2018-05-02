@@ -23,7 +23,7 @@ class CreateUserDetailsTable extends Migration
             $table->string('city',100)->nullable();
             $table->string('state',2)->nullable();
             $table->string('zip_code',10)->nullable();
-            $table->string('country',3)->nullable();
+            $table->string('country',2)->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('user_note',50)->nullable();
             $table->string('membership_number',20)->nullable();

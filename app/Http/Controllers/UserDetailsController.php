@@ -6,6 +6,7 @@ use Auth;
 use App\UserDetail;
 use App\UserType;
 use App\State;
+use App\Country;
 use Illuminate\Http\Request;
 
 class UserDetailsController extends Controller
@@ -38,6 +39,7 @@ class UserDetailsController extends Controller
         return view('userdetail.create')->with([
             'userTypesForDropdown' => UserType::getForDropdown(),
             'statesForDropdown' => State::getForDropdown(),
+            'countriesForDropdown' => Country::getForDropdown(),
             'user_detail' => new UserDetail(),
             'alert' => $alert,
             'alert_color' => $alert_color,
@@ -127,6 +129,7 @@ class UserDetailsController extends Controller
         return view('userdetail.edit')->with([
             'userTypesForDropdown' => UserType::getForDropdown(),
             'statesForDropdown' => State::getForDropdown(),
+            'countriesForDropdown' => Country::getForDropdown(),
             'user_detail' => $user_detail
         ]);
     }

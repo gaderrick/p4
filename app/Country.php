@@ -12,7 +12,7 @@ class Country extends Model
 
         $countriesForDropdown = [];
         foreach ($countries as $country) {
-            $countriesForDropdown[$country->id] = $country->country_name;
+            $countriesForDropdown[$country->id] = $country->name;
         }
 
         return $countriesForDropdown;

@@ -12,7 +12,7 @@ class State extends Model
 
         $statesForDropdown = [];
         foreach ($states as $state) {
-            $statesForDropdown[$state->id] = $state->state_name;
+            $statesForDropdown[$state->id] = $state->name;
         }
 
         return $statesForDropdown;

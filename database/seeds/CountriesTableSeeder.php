@@ -16,8 +16,8 @@ class CountriesTableSeeder extends Seeder
         foreach ($countries as $countryData) {
             $country = new Country();
             $country->timestamps = false;
-            $country->country_abbreviation = $countryData[0];
-            $country->country_name = $countryData[1];
+            $country->abbreviation = $countryData[0];
+            $country->name = $countryData[1];
 
             $country->save();
         }

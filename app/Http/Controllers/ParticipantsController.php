@@ -3,31 +3,31 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\UserDetail;
+use App\Participant;
 use App\UserType;
 use App\State;
 use App\Country;
 use Illuminate\Http\Request;
 
-class UserDetailsController extends Controller
+class ParticipantsController extends Controller
 {
     public function index()
     {
         // first thing get current user's id from Auth and only show their user infos
         $current_user = auth()->user()->id;
-        $user_details = UserDetail::where('user_id', '=', $current_user)->orderBy('last_name')->get();
+        $participants = Participant::where('user_id', '=', $current_user)->orderBy('last_name')->get();
 
-        $count = $user_details->count();
+        $count = $participants->count();
 
         if ($count == 0) {
-            return redirect()->route('userdetail.create')->with([
+            return redirect()->route('participant.create')->with([
                 'alert' => 'No participants are paired with this user. You may create one up below.',
                 'alert_color' => 'yellow'
             ]);
         }
 
-        return view('userdetail.index')->with([
-            'user_details' => $user_details
+        return view('participant.index')->with([
+            'participants' => $participants
         ]);
     }
 
@@ -36,11 +36,11 @@ class UserDetailsController extends Controller
         $alert = $request->session()->get('alert');
         $alert_color = $request->session()->get('alert_color');
 
-        return view('userdetail.create')->with([
+        return view('participant.create')->with([
             'userTypesForDropdown' => UserType::getForDropdown(),
             'statesForDropdown' => State::getForDropdown(),
             'countriesForDropdown' => Country::getForDropdown(),
-            'user_detail' => new UserDetail(),
+            'participant' => new Participant(),
             'alert' => $alert,
             'alert_color' => $alert_color,
         ]);
@@ -49,7 +49,7 @@ class UserDetailsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'user_type' => 'required|integer',
+        'user_type_id' => 'required|integer',
         'first_name' => 'required|string|min:2|max:80',
         'middle_name' => 'string|nullable|max:40',
         'last_name' => 'required|string|min:2|max:80',
@@ -63,11 +63,11 @@ class UserDetailsController extends Controller
         'zip_code' => 'string|nullable|max:10',
         'country_id' => 'integer|nullable',
         'date_of_birth' => 'date|date_format:Y-m-d|nullable',
-        'user_note' => 'string|nullable|max:50',
+        'note' => 'string|nullable|max:50',
         'membership_number' => 'string|nullable|max:20'
     ]);
 
-        // Magic code generator for user_details
+        // Magic code generator for participants
         $magicCode = "";
         $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
         $max = count($characters) - 1;
@@ -77,34 +77,34 @@ class UserDetailsController extends Controller
         }
 
         # Save the user details to the database
-        $user_detail = new UserDetail();
-        $user_detail->user_id = auth()->user()->id;
-        $user_detail->user_type = $request->user_type;
-        $user_detail->first_name = $request->first_name;
-        $user_detail->middle_name = $request->middle_name;
-        $user_detail->last_name = $request->last_name;
-        $user_detail->sex = $request->sex;
-        $user_detail->email = $request->email;
-        $user_detail->phone = $request->phone;
-        $user_detail->cell_phone = $request->cell_phone;
-        $user_detail->street_address = $request->street_address;
-        $user_detail->city = $request->city;
-        $user_detail->state_id = $request->state_id;
-        $user_detail->zip_code = $request->zip_code;
-        $user_detail->country_id = $request->country_id;
-        $user_detail->date_of_birth = $request->date_of_birth;
-        $user_detail->user_note = $request->user_note;
-        $user_detail->membership_number = $request->membership_number;
-        $user_detail->user_magic_code = $magicCode;
+        $participant = new Participant();
+        $participant->user_id = auth()->user()->id;
+        $participant->user_type_id = $request->user_type_id;
+        $participant->first_name = $request->first_name;
+        $participant->middle_name = $request->middle_name;
+        $participant->last_name = $request->last_name;
+        $participant->sex = $request->sex;
+        $participant->email = $request->email;
+        $participant->phone = $request->phone;
+        $participant->cell_phone = $request->cell_phone;
+        $participant->street_address = $request->street_address;
+        $participant->city = $request->city;
+        $participant->state_id = $request->state_id;
+        $participant->zip_code = $request->zip_code;
+        $participant->country_id = $request->country_id;
+        $participant->date_of_birth = $request->date_of_birth;
+        $participant->note = $request->note;
+        $participant->membership_number = $request->membership_number;
+        $participant->magic_code = $magicCode;
 
-        $user_detail->save();
+        $participant->save();
 
 //        # Logging code just as proof of concept that this method is being invoked
-//        # Log::info('Saved user details for ' . $user_detail->user_id);
+//        # Log::info('Saved user details for ' . $participant->user_id);
 
 //        # Send the user back to the list of participants page w/ success message
-        return redirect(route('userdetail.index'))->with([
-            'alert' => 'Saved user details for ' . $user_detail->first_name . ' ' . $user_detail->last_name,
+        return redirect(route('participant.index'))->with([
+            'alert' => 'Saved user details for ' . $participant->first_name . ' ' . $participant->last_name,
             'alert_color' => 'green'
         ]);
     }
@@ -112,32 +112,32 @@ class UserDetailsController extends Controller
     public function edit($id)
     {
         $current_user = auth()->user()->id;
-        $user_detail = UserDetail::find($id);
+        $participant = Participant::find($id);
 
-        if (!($user_detail && $user_detail->user_id == $current_user)) {
-            $user_detail = null;
+        if (!($participant && $participant->user_id == $current_user)) {
+            $participant = null;
         }
 
-        # Handle the case where we can't find the given user_detail
-        if (!$user_detail) {
+        # Handle the case where we can't find the given participant
+        if (!$participant) {
             return redirect(route('home'))->with([
                 'alert' => 'No matching participant was found.',
                 'alert_color' => 'yellow'
             ]);
         }
 
-        return view('userdetail.edit')->with([
+        return view('participant.edit')->with([
             'userTypesForDropdown' => UserType::getForDropdown(),
             'statesForDropdown' => State::getForDropdown(),
             'countriesForDropdown' => Country::getForDropdown(),
-            'user_detail' => $user_detail
+            'participant' => $participant
         ]);
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'user_type' => 'required|integer',
+            'user_type_id' => 'required|integer',
             'first_name' => 'required|string|min:2|max:80',
             'middle_name' => 'string|nullable|max:40',
             'last_name' => 'required|string|min:2|max:80',
@@ -151,34 +151,34 @@ class UserDetailsController extends Controller
             'zip_code' => 'string|nullable|max:10',
             'country_id' => 'integer|nullable',
             'date_of_birth' => 'date|date_format:Y-m-d|nullable',
-            'user_note' => 'string|nullable|max:50',
+            'note' => 'string|nullable|max:50',
             'membership_number' => 'string|nullable|max:20'
         ]);
 
         # Fetch the record
-        $user_detail = UserDetail::find($id);
+        $participant = Participant::find($id);
 
         # Update the participant details
-        $user_detail->user_type = $request->user_type;
-        $user_detail->first_name = $request->first_name;
-        $user_detail->middle_name = $request->middle_name;
-        $user_detail->last_name = $request->last_name;
-        $user_detail->sex = $request->sex;
-        $user_detail->email = $request->email;
-        $user_detail->phone = $request->phone;
-        $user_detail->cell_phone = $request->cell_phone;
-        $user_detail->street_address = $request->street_address;
-        $user_detail->city = $request->city;
-        $user_detail->state_id = $request->state_id;
-        $user_detail->zip_code = $request->zip_code;
-        $user_detail->country_id = $request->country_id;
-        $user_detail->date_of_birth = $request->date_of_birth;
-        $user_detail->user_note = $request->user_note;
-        $user_detail->membership_number = $request->membership_number;
+        $participant->user_type_id = $request->user_type_id;
+        $participant->first_name = $request->first_name;
+        $participant->middle_name = $request->middle_name;
+        $participant->last_name = $request->last_name;
+        $participant->sex = $request->sex;
+        $participant->email = $request->email;
+        $participant->phone = $request->phone;
+        $participant->cell_phone = $request->cell_phone;
+        $participant->street_address = $request->street_address;
+        $participant->city = $request->city;
+        $participant->state_id = $request->state_id;
+        $participant->zip_code = $request->zip_code;
+        $participant->country_id = $request->country_id;
+        $participant->date_of_birth = $request->date_of_birth;
+        $participant->note = $request->note;
+        $participant->membership_number = $request->membership_number;
 
-        $user_detail->save();
+        $participant->save();
 
-        return redirect(route('userdetail.edit', $user_detail->id))->with([
+        return redirect(route('participant.edit', $participant->id))->with([
             'alert' => 'Your changes were saved',
             'alert_color' => 'green'
         ]);
@@ -187,38 +187,38 @@ class UserDetailsController extends Controller
     public function delete($id)
     {
         $current_user = auth()->user()->id;
-        $user_detail = UserDetail::find($id);
+        $participant = Participant::find($id);
 
-        if (!($user_detail && $user_detail->user_id == $current_user)) {
-            $user_detail = null;
+        if (!($participant && $participant->user_id == $current_user)) {
+            $participant = null;
         }
 
-        # Handle the case where we can't find the given user_detail
-        if (!$user_detail) {
+        # Handle the case where we can't find the given participant
+        if (!$participant) {
             return redirect(route('home'))->with([
                 'alert' => 'No matching participant was found.',
                 'alert_color' => 'yellow'
             ]);
         }
 
-        return view('userdetail.delete')->with([
-            'user_detail' => $user_detail,
+        return view('participant.delete')->with([
+            'participant' => $participant,
         ]);
     }
 
     public function destroy($id)
     {
-        $user_detail = UserDetail::find($id);
+        $participant = Participant::find($id);
 
         # Before we delete the book we have to delete any tag associations
-        # todo: detach the roster_user_detail info
+        # todo: detach the roster_participant info
         # $book->tags()->detach();
 
         # todo: look into how to do soft deletes; maybe add # to user_id?
-        $user_detail->delete();
+        $participant->delete();
 
-        return redirect(route('userdetail.index'))->with([
-            'alert' => 'Participant '.$user_detail->first_name.' '.$user_detail->last_name.' was deleted.',
+        return redirect(route('participant.index'))->with([
+            'alert' => 'Participant '.$participant->first_name.' '.$participant->last_name.' was deleted.',
             'alert_color' => 'red'
         ]);
     }

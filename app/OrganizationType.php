@@ -8,11 +8,11 @@ class OrganizationType extends Model
 {
     public static function getForDropdown()
     {
-        $organizationTypes = self::orderBy('type_description')->get();
+        $organizationTypes = self::orderBy('description')->get();
 
         $organizationTypesForDropdown = [];
         foreach ($organizationTypes as $organizationType) {
-            $organizationTypesForDropdown[$organizationType->id] = $organizationType->type_description;
+            $organizationTypesForDropdown[$organizationType->id] = $organizationType->description;
         }
 
         return $organizationTypesForDropdown;

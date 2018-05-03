@@ -10,8 +10,8 @@ class Roster extends Model
         return $this->belongsTo('App\Organization');
     }
 
-    public function user_details(){
+    public function participant(){
         # withTimeStamps ensures pivot table is automatically maintained
-        return $this->belongsToMany('App\UserDetail')->withTimestamps();
+        return $this->belongsToMany('App\Participant')->withTimestamps();
     }
 }

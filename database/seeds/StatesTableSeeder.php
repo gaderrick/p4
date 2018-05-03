@@ -63,8 +63,8 @@ class StatesTableSeeder extends Seeder
     foreach ($states as $stateData) {
         $state = new State();
         $state->timestamps = false;
-        $state->state_abbreviation = $stateData[0];
-        $state->state_name = $stateData[1];
+        $state->abbreviation = $stateData[0];
+        $state->name = $stateData[1];
 
         $state->save();
     }

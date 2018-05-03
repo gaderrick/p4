@@ -18,19 +18,19 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 // USERINFO ROUTES
 // CREATE: Show the form to add an organization; process the form to add a new organization
-Route::get('/userdetail/create','UserDetailsController@create')->name('userdetail.create')->middleware('auth');
-Route::post('/userdetail','UserDetailsController@store')->name('userdetail.store')->middleware('auth');
+Route::get('/participant/create','ParticipantsController@create')->name('participant.create')->middleware('auth');
+Route::post('/participant','ParticipantsController@store')->name('participant.store')->middleware('auth');
 
 // READ: List all participants owned/managed by a user
-Route::get('/userdetail/index','UserDetailsController@index')->name('userdetail.index')->middleware('auth');
+Route::get('/participant/index','ParticipantsController@index')->name('participant.index')->middleware('auth');
 
 // UPDATE: Show the edit form; process the form changes
-Route::get('/userdetail/{id}/edit','UserDetailsController@edit')->name('userdetail.edit')->middleware('auth');
-Route::put('/userdetail/{id}','UserDetailsController@update')->name('userdetail.update')->middleware('auth');
+Route::get('/participant/{id}/edit','ParticipantsController@edit')->name('participant.edit')->middleware('auth');
+Route::put('/participant/{id}','ParticipantsController@update')->name('participant.update')->middleware('auth');
 
 // DELETE: Show the delete form; process the deletion
-Route::get('/userdetail/{id}/delete','UserDetailsController@delete')->name('userdetail.delete')->middleware('auth');
-Route::delete('/userdetail/{id}','UserDetailsController@destroy')->name('userdetail.destroy')->middleware('auth');
+Route::get('/participant/{id}/delete','ParticipantsController@delete')->name('participant.delete')->middleware('auth');
+Route::delete('/participant/{id}','ParticipantsController@destroy')->name('participant.destroy')->middleware('auth');
 
 // ORGANIZATION ROUTES
 // CREATE: Show the form to add an organization; process the form to add a new organization

@@ -14,7 +14,7 @@ class OrganizationController extends Controller
     public function index()
     {
         $current_user = auth()->user()->id;
-        $organizations = Organization::where('user_id', '=', $current_user)->orderBy('organization_name')->get();
+        $organizations = Organization::where('user_id', '=', $current_user)->orderBy('name')->get();
 
         $count = $organizations->count();
 
@@ -48,9 +48,9 @@ class OrganizationController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'organization_type' => 'required|integer',
-            'organization_category' => 'required|integer',
-            'organization_name' => 'required|string|min:2|max:150',
+            'type' => 'required|integer',
+            'category' => 'required|integer',
+            'name' => 'required|string|min:2|max:150',
             'street_address' => 'string|nullable|max:150',
             'city' => 'string|nullable|max:100',
             'state_id' => 'integer|nullable',
@@ -76,9 +76,9 @@ class OrganizationController extends Controller
         # Save the user details to the database
         $organization = new Organization();
         $organization->user_id = auth()->user()->id;
-        $organization->organization_type = $request->organization_type;
-        $organization->organization_category = $request->organization_category;
-        $organization->organization_name = $request->organization_name;
+        $organization->type = $request->type;
+        $organization->category = $request->category;
+        $organization->name = $request->name;
         $organization->street_address = $request->street_address;
         $organization->city = $request->city;
         $organization->state_id = $request->state_id;
@@ -89,7 +89,7 @@ class OrganizationController extends Controller
         $organization->email = $request->email;
         $organization->phone = $request->phone;
         $organization->membership_number = $request->membership_number;
-        $organization->organization_magic_code = $magicCode;
+        $organization->magic_code = $magicCode;
 
         $organization->save();
 
@@ -98,7 +98,7 @@ class OrganizationController extends Controller
 
         // Send the user back to the list of organizations page w/ success message
         return redirect(route('org.index'))->with([
-            'alert' => 'Organization '.$organization->organization_name.' created.',
+            'alert' => 'Organization '.$organization->name.' created.',
             'alert_color' => 'green'
         ]);
     }
@@ -131,9 +131,9 @@ class OrganizationController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'organization_type' => 'required|integer',
-            'organization_category' => 'required|integer',
-            'organization_name' => 'required|string|min:2|max:150',
+            'type' => 'required|integer',
+            'category' => 'required|integer',
+            'name' => 'required|string|min:2|max:150',
             'street_address' => 'string|nullable|max:150',
             'city' => 'string|nullable|max:100',
             'state_id' => 'integer|nullable',
@@ -149,9 +149,9 @@ class OrganizationController extends Controller
         $organization = Organization::find($id);
 
         # Save the user details to the database
-        $organization->organization_type = $request->organization_type;
-        $organization->organization_category = $request->organization_category;
-        $organization->organization_name = $request->organization_name;
+        $organization->type = $request->type;
+        $organization->category = $request->category;
+        $organization->name = $request->name;
         $organization->street_address = $request->street_address;
         $organization->city = $request->city;
         $organization->state_id = $request->state_id;
@@ -205,7 +205,7 @@ class OrganizationController extends Controller
         $organization->delete();
 
         return redirect(route('org.index'))->with([
-            'alert' => 'Organization '.$organization->organization_name.' was deleted.',
+            'alert' => 'Organization '.$organization->name.' was deleted.',
             'alert_color' => 'red'
         ]);
     }

@@ -8,11 +8,11 @@ class UserType extends Model
 {
     public static function getForDropdown()
     {
-        $userTypes = self::orderBy('type_description')->get();
+        $userTypes = self::orderBy('description')->get();
 
         $userTypesForDropdown = [];
         foreach ($userTypes as $userType) {
-            $userTypesForDropdown[$userType->id] = $userType->type_description;
+            $userTypesForDropdown[$userType->id] = $userType->description;
         }
 
         return $userTypesForDropdown;

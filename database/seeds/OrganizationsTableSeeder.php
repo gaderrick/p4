@@ -19,9 +19,9 @@ class OrganizationsTableSeeder extends Seeder
             $organization = new Organization();
 
             $organization->user_id = $organizationData[0];
-            $organization->organization_type = $organizationData[1];
-            $organization->organization_category = $organizationData[2];
-            $organization->organization_name = $organizationData[3];
+            $organization->type = $organizationData[1];
+            $organization->category = $organizationData[2];
+            $organization->name = $organizationData[3];
             $organization->street_address = $organizationData[4];
             $organization->city = $organizationData[5];
             $organization->state_id = $organizationData[6];
@@ -32,7 +32,7 @@ class OrganizationsTableSeeder extends Seeder
             $organization->email = $organizationData[11];
             $organization->phone = $organizationData[12];
             $organization->membership_number = $organizationData[13];
-            $organization->organization_magic_code = $organizationData[14];
+            $organization->magic_code = $organizationData[14];
 
             $organization->created_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();
             $organization->updated_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();

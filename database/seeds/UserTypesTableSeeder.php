@@ -18,7 +18,7 @@ class UserTypesTableSeeder extends Seeder
             $userType = new UserType();
             $userType->timestamps = false;
             $userType->id = $userTypeData[0];
-            $userType->type_description = $userTypeData[1];
+            $userType->description = $userTypeData[1];
 
             $userType->save();
         }

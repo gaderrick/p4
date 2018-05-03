@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\OrganizationType;
 
-class OrganizationTypesSeeder extends Seeder
+class OrganizationTypesTableSeeder extends Seeder
 {
     public function run()
     {
@@ -18,7 +18,7 @@ class OrganizationTypesSeeder extends Seeder
         foreach ($organizationTypes as $organizationTypeData) {
             $organizationType = new OrganizationType();
             $organizationType->timestamps = false;
-            $organizationType->type_description = $organizationTypeData[0];
+            $organizationType->description = $organizationTypeData[0];
 
             $organizationType->save();
         }

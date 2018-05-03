@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\UserDetail;
+use App\Participant;
 
-class UserDetailsTableSeeder extends Seeder
+class ParticipantsTableSeeder extends Seeder
 {
     public function run()
     {
-        $userDetails = [
+        $participants = [
             [5,4,'Ronan','Eleanor','Matthews','M','convallis@eu.edu','1-100-601-3612','1-626-890-5075','843-6835 Varius Rd.','Mobile',1,'18704',1,'1998-05-24','lorem, luctus ut, pellentesque','Y66282','RuK1g50wMu'],
             [4,2,'Gannon','Jeremy','Stewart','M','lobortis@sollicitudinadipiscing.net','1-696-595-8828','1-264-813-5385','P.O. Box 564, 8277 Lacus. St.','Baton Rouge',2,'48796',1,'2000-10-12','varius orci, in','C82661','DzP7g77aYk'],
             [3,1,'Otto','Kaseem','Beard','M','tempus.lorem@vulputate.org','1-769-860-7356','1-424-668-3311','787-3134 Habitant Ave','Cleveland',3,'67153',1,'1997-10-09','risus. Nulla eget','A09233','ByY7n98zBu'],
@@ -54,8 +54,8 @@ class UserDetailsTableSeeder extends Seeder
             [3,4,'Ishmael','Eleanor','Mcconnell','M','Quisque.imperdiet.erat@sedtortorInteger.edu','1-321-224-8116','1-121-416-7275','1701 Nec Street','Tuscaloosa',1,'32009',1,'2000-03-17','rhoncus id, mollis','U52354','PlB2e41yTy'],
             [4,4,'Armand','Quyn','Herrera','M','Fusce.mi@Morbivehicula.edu','1-967-680-2666','1-347-525-2479','6528 Vitae Road','Hartford',29,'74334',1,'2000-03-10','quis lectus. Nullam','Q09825','QrU4b13aKf'],
             [1,1,'Hilel','Armando','Whitaker','M','euismod.urna.Nullam@sodalespurusin.ca','1-727-504-6706','1-711-275-1875','P.O. Box 527, 1728 Eu Street','Montgomery',1,'46715',1,'2000-03-19','scelerisque dui. Suspendisse','S77703','MhG0r36wGs'],
-            [3,1,'Dieter','Brittany','Lancaster','M','justo.Praesent@purUSccumsan.co.uk','1-172-645-5215','1-288-280-7035','P.O. Box 885, 9545 Netus Avenue','New Orleans',2,'67936',1,'1999-01-26','neque. Nullam nisl.','F48562','QkJ9u82dIi'],
-            [3,4,'Marvin','Hilel','Wilder','M','Duis.dignissim@antedictum.com','1-872-478-8984','1-588-355-8365','1364 Blandit. Av.','Springdale',8,'66544',1,'2002-01-15','interdum. Curabitur','Z05533','AfQ8h23tFj'],
+            //[3,1,'Dieter','Brittany','Lancaster','M','justo.Praesent@purUSccumsan.co.uk','1-172-645-5215','1-288-280-7035','P.O. Box 885, 9545 Netus Avenue','New Orleans',2,'67936',1,'1999-01-26','neque. Nullam nisl.','F48562','QkJ9u82dIi'],
+            //[3,4,'Marvin','Hilel','Wilder','M','Duis.dignissim@antedictum.com','1-872-478-8984','1-588-355-8365','1364 Blandit. Av.','Springdale',8,'66544',1,'2002-01-15','interdum. Curabitur','Z05533','AfQ8h23tFj'],
             [2,3,'Brody','Abbot','Boyer','M','Nullam.scelerisque.neque@nisiCumsociis.org','1-521-878-0601','1-365-100-2632','166-1785 Vel Rd.','Bridgeport',29,'15987',1,'1998-08-05','felis.','L42753','ZvH6t84rNx'],
             [2,3,'Stephen','Channing','Avery','M','Nulla.facilisi@rutrummagnaCras.ca','1-149-765-8476','1-340-514-1363','6619 Duis Av.','Madison',30,'67077',1,'2000-03-24','sit','M52765','VrM7m40cIn'],
             [2,4,'Ruby','Theodore','Emerson','F','Nunc.ut@Donecdignissim.com','1-725-876-3001','1-546-162-5329','1133 Elit Street','Hartford',29,'71467',1,'2001-09-13','risus, at fringilla purus','J86998','DxT0t76mGv'],
@@ -110,28 +110,28 @@ class UserDetailsTableSeeder extends Seeder
             [3,4,'Eleanor','Clayton','Russell','F','pharetra.felis@Etiamgravidamolestie.ca','1-644-598-7702','1-222-481-5690','1223 Nunc Avenue','Biloxi',32,'97144',1,'1998-04-05','ornare, elit elit','M75757','CpM0h48cZs']
         ];
 
-        $count = count($userDetails);
-        foreach ($userDetails as $userDetailData) {
-            $userDetail = new UserDetail();
+        $count = count($participants);
+        foreach ($participants as $participant) {
+            $userDetail = new Participant();
 
-            $userDetail->user_id = $userDetailData[0];
-            $userDetail->user_type = $userDetailData[1];
-            $userDetail->first_name = $userDetailData[2];
-            $userDetail->middle_name = $userDetailData[3];
-            $userDetail->last_name = $userDetailData[4];
-            $userDetail->sex = $userDetailData[5];
-            $userDetail->email = $userDetailData[6];
-            $userDetail->phone = $userDetailData[7];
-            $userDetail->cell_phone = $userDetailData[8];
-            $userDetail->street_address = $userDetailData[9];
-            $userDetail->city = $userDetailData[10];
-            $userDetail->state_id = $userDetailData[11];
-            $userDetail->zip_code = $userDetailData[12];
-            $userDetail->country_id = $userDetailData[13];
-            $userDetail->date_of_birth = $userDetailData[14];
-            $userDetail->user_note = $userDetailData[15];
-            $userDetail->membership_number = $userDetailData[16];
-            $userDetail->user_magic_code = $userDetailData[17];
+            $userDetail->user_id = $participant[0];
+            $userDetail->user_type_id = $participant[1];
+            $userDetail->first_name = $participant[2];
+            $userDetail->middle_name = $participant[3];
+            $userDetail->last_name = $participant[4];
+            $userDetail->sex = $participant[5];
+            $userDetail->email = $participant[6];
+            $userDetail->phone = $participant[7];
+            $userDetail->cell_phone = $participant[8];
+            $userDetail->street_address = $participant[9];
+            $userDetail->city = $participant[10];
+            $userDetail->state_id = $participant[11];
+            $userDetail->zip_code = $participant[12];
+            $userDetail->country_id = $participant[13];
+            $userDetail->date_of_birth = $participant[14];
+            $userDetail->note = $participant[15];
+            $userDetail->membership_number = $participant[16];
+            $userDetail->magic_code = $participant[17];
             $userDetail->created_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();
             $userDetail->updated_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();
             $userDetail->deleted_at = null;

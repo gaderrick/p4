@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserDetail extends Model
+class Participant extends Model
 {
-    public function user_detail()
+    public function participant()
     {
         return $this->belongsTo('App\User');
     }

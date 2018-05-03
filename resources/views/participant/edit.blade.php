@@ -8,12 +8,12 @@
     <div class="container">
         <div class="col-md-6 center">
             <div>
-                <form method="POST" action="{{ route('userdetail.update', $user_detail->id) }}">
+                <form method="POST" action="{{ route('participant.update', $participant->id) }}">
                     {{ csrf_field() }}
                     {{ method_field('put') }}
 
                     <div style="text-align: center"><h3>Update an Existing Participant</h3></div>
-                    @include('userdetail.userdetailFormInputs')
+                    @include('participant.participantFormInputs')
 
                     <div class="form-group">
                         <div class="col-md-12">

@@ -115,7 +115,7 @@ class ParticipantsTableSeeder extends Seeder
             $userDetail = new Participant();
 
             $userDetail->user_id = $participant[0];
-            $userDetail->participant_type_id = $participant[1];
+            $userDetail->type_id = $participant[1];
             $userDetail->first_name = $participant[2];
             $userDetail->middle_name = $participant[3];
             $userDetail->last_name = $participant[4];

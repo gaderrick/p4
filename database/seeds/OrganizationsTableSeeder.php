@@ -19,7 +19,7 @@ class OrganizationsTableSeeder extends Seeder
             $organization = new Organization();
 
             $organization->user_id = $organizationData[0];
-            $organization->type = $organizationData[1];
+            $organization->type_id = $organizationData[1];
             $organization->category = $organizationData[2];
             $organization->name = $organizationData[3];
             $organization->street_address = $organizationData[4];

@@ -8,13 +8,13 @@ class ParticipantType extends Model
 {
     public static function getForDropdown()
     {
-        $userTypes = self::orderBy('description')->get();
+        $participantTypes = self::orderBy('description')->get();
 
-        $userTypesForDropdown = [];
-        foreach ($userTypes as $userType) {
-            $userTypesForDropdown[$userType->id] = $userType->description;
+        $participantTypesForDropdown = [];
+        foreach ($participantTypes as $participantType) {
+            $participantTypesForDropdown[$participantType->id] = $participantType->description;
         }
 
-        return $userTypesForDropdown;
+        return $participantTypesForDropdown;
     }
 }

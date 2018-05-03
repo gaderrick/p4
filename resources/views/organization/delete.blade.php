@@ -14,7 +14,7 @@
 
                     <div style="text-align: center">
                         <h3>Delete an Existing Participant</h3>
-                        Are you sure you want to delete {{ $organization->organization_name }}?<br><br>
+                        Are you sure you want to delete {{ $organization->name }}?<br><br>
                         <div class="form-group">
                             <div class="col-md-12">
                                 <!-- todo: make the following button red -->

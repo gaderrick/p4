@@ -10,7 +10,7 @@
     or
     <br>
     @foreach($organizations as $organization)
-        Edit organization: <a href='{{ route('org.edit', $organization->id) }}'>{{ $organization->organization_name }}</a> or
+        Edit organization: <a href='{{ route('org.edit', $organization->id) }}'>{{ $organization->name }}</a> or
         <a href='{{ route('org.delete', $organization->id) }}'>(DELETE)</a><br>
     @endforeach
 @endsection

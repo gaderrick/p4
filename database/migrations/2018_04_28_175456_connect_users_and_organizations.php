@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class ConnectUsersAndOrganizations extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('organizations', function(Blueprint $table) {

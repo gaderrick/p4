@@ -37,7 +37,7 @@ class ParticipantsController extends Controller
         $alert_color = $request->session()->get('alert_color');
 
         return view('participant.create')->with([
-            'userTypesForDropdown' => ParticipantType::getForDropdown(),
+            'participantTypesForDropdown' => ParticipantType::getForDropdown(),
             'statesForDropdown' => State::getForDropdown(),
             'countriesForDropdown' => Country::getForDropdown(),
             'participant' => new Participant(),
@@ -49,7 +49,7 @@ class ParticipantsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'participant_type_id' => 'required|integer',
+        'type_id' => 'required|integer',
         'first_name' => 'required|string|min:2|max:80',
         'middle_name' => 'string|nullable|max:40',
         'last_name' => 'required|string|min:2|max:80',
@@ -79,7 +79,7 @@ class ParticipantsController extends Controller
         # Save the user details to the database
         $participant = new Participant();
         $participant->user_id = auth()->user()->id;
-        $participant->participant_type_id = $request->participant_type_id;
+        $participant->type_id = $request->type_id;
         $participant->first_name = $request->first_name;
         $participant->middle_name = $request->middle_name;
         $participant->last_name = $request->last_name;
@@ -127,7 +127,7 @@ class ParticipantsController extends Controller
         }
 
         return view('participant.edit')->with([
-            'userTypesForDropdown' => ParticipantType::getForDropdown(),
+            'participantTypesForDropdown' => ParticipantType::getForDropdown(),
             'statesForDropdown' => State::getForDropdown(),
             'countriesForDropdown' => Country::getForDropdown(),
             'participant' => $participant
@@ -137,7 +137,7 @@ class ParticipantsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'participant_type_id' => 'required|integer',
+            'type_id' => 'required|integer',
             'first_name' => 'required|string|min:2|max:80',
             'middle_name' => 'string|nullable|max:40',
             'last_name' => 'required|string|min:2|max:80',
@@ -159,7 +159,7 @@ class ParticipantsController extends Controller
         $participant = Participant::find($id);
 
         # Update the participant details
-        $participant->participant_type_id = $request->participant_type_id;
+        $participant->type_id = $request->type_id;
         $participant->first_name = $request->first_name;
         $participant->middle_name = $request->middle_name;
         $participant->last_name = $request->last_name;

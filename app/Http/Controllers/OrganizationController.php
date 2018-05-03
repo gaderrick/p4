@@ -48,7 +48,7 @@ class OrganizationController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'type' => 'required|integer',
+            'type_id' => 'required|integer',
             'category' => 'required|integer',
             'name' => 'required|string|min:2|max:150',
             'street_address' => 'string|nullable|max:150',
@@ -76,7 +76,7 @@ class OrganizationController extends Controller
         # Save the user details to the database
         $organization = new Organization();
         $organization->user_id = auth()->user()->id;
-        $organization->type = $request->type;
+        $organization->type_id = $request->type_id;
         $organization->category = $request->category;
         $organization->name = $request->name;
         $organization->street_address = $request->street_address;
@@ -131,7 +131,7 @@ class OrganizationController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'type' => 'required|integer',
+            'type_id' => 'required|integer',
             'category' => 'required|integer',
             'name' => 'required|string|min:2|max:150',
             'street_address' => 'string|nullable|max:150',
@@ -149,7 +149,7 @@ class OrganizationController extends Controller
         $organization = Organization::find($id);
 
         # Save the user details to the database
-        $organization->type = $request->type;
+        $organization->type_id = $request->type_id;
         $organization->category = $request->category;
         $organization->name = $request->name;
         $organization->street_address = $request->street_address;

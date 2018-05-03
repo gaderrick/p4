@@ -1,28 +1,28 @@
 <div style="text-align: center">* Required fields</div>
 <div class="form-group">
-    <label for='organization_type' class='col-md-12 control-label'>* Organization Type</label>
+    <label for='type_id' class='col-md-12 control-label'>* Organization Type</label>
     <div class="col-md-12">
-        <select id='organization_type' name='organization_type' class="form-control">
+        <select id='type_id' name='type_id' class="form-control">
             <option value=''>Choose one...</option>
             @foreach($organizationTypesForDropdown as $id => $organizationDescription)
-                <option value='{{ $id }}' {{ (old('organization_type',$organization->organization_type) == $id) ? 'selected' : '' }}>{{ $organizationDescription }}</option>
+                <option value='{{ $id }}' {{ (old('type_id',$organization->type_id) == $id) ? 'selected' : '' }}>{{ $organizationDescription }}</option>
             @endforeach
         </select>
-        @include('modules.error-field', ['field' => 'organization_type'])
+        @include('modules.error-field', ['field' => 'type_id'])
     </div>
 </div>
 <div class="form-group">
-    <label for='organization_category' class="col-md-12 control-label">* Organization Category</label>
+    <label for='category' class="col-md-12 control-label">* Category</label>
     <div class="col-md-12">
-        <input id='organization_category' type='text' class="form-control" name='organization_category' value='{{ old('organization_category', $organization->organization_category) }}'>
-        @include('modules.error-field', ['field' => 'organization_category'])
+        <input id='category' type='text' class="form-control" name='category' value='{{ old('category', $organization->category) }}'>
+        @include('modules.error-field', ['field' => 'category'])
     </div>
 </div>
 <div class="form-group">
-    <label for='organization_name' class="col-md-12 control-label">* Organization Name</label>
+    <label for='name' class="col-md-12 control-label">* Organization Name</label>
     <div class="col-md-12">
-        <input id='organization_name' type='text' class="form-control" name='organization_name' value='{{ old('organization_name', $organization->organization_name) }}'>
-        @include('modules.error-field', ['field' => 'organization_name'])
+        <input id='name' type='text' class="form-control" name='name' value='{{ old('name', $organization->name) }}'>
+        @include('modules.error-field', ['field' => 'name'])
     </div>
 </div>
 <div class="form-group">

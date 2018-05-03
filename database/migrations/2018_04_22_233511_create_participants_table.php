@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserDetailsTable extends Migration
+class CreateParticipantsTable extends Migration
 {
     public function up()
     {
-        Schema::create('user_details', function (Blueprint $table) {
+        Schema::create('participants', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('user_type');
@@ -25,9 +25,9 @@ class CreateUserDetailsTable extends Migration
             $table->string('zip_code',10)->nullable();
             $table->unsignedInteger('country_id')->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->string('user_note',50)->nullable();
+            $table->string('note',50)->nullable();
             $table->string('membership_number',20)->nullable();
-            $table->string('user_magic_code',10)->nullable();
+            $table->string('magic_code',10)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -35,6 +35,6 @@ class CreateUserDetailsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('user_details');
+        Schema::dropIfExists('participants');
     }
 }

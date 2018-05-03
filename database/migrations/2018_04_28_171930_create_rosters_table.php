@@ -16,20 +16,14 @@ class CreateRostersTable extends Migration
         Schema::create('rosters', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('organization_id');
-            $table->unsignedInteger('roster_type_id');
-            $table->string('roster_name',150);
-            $table->text('roster_description')->nullable();
-            $table->string('roster_magic_code',10)->nullable();
+            $table->unsignedInteger('type_id');
+            $table->string('name',150);
+            $table->text('description')->nullable();
+            $table->string('magic_code',10)->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('rosters');

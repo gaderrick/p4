@@ -10,7 +10,7 @@ class CreateOrganizationTypesTable extends Migration
     {
         Schema::create('organization_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type_description',30);
+            $table->string('description',30);
         });
     }
 

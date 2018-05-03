@@ -1,11 +1,11 @@
 <div style="text-align: center">* Required fields</div>
 <div class="form-group">
-    <label for='user_type_id' class="col-md-12 control-label">* User Type</label>
+    <label for='participant_type_id' class="col-md-12 control-label">* User Type</label>
     <div class="col-md-12">
-        <select id='user_type_id' name='user_type_id' class="form-control">
+        <select id='participant_type_id' name='participant_type_id' class="form-control">
             <option value=''>Choose one...</option>
             @foreach($userTypesForDropdown as $id => $userTypeDescription)
-                <option value='{{ $id }}' {{ (old('user_type_id',$participant->user_type_id) == $id) ? 'selected' : '' }}>{{ $userTypeDescription }}</option>
+                <option value='{{ $id }}' {{ (old('participant_type_id',$participant->participant_type_id) == $id) ? 'selected' : '' }}>{{ $userTypeDescription }}</option>
             @endforeach
         </select>
         @include('modules.error-field', ['field' => 'type'])

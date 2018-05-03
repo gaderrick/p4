@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserTypesTable extends Migration
+class CreateParticipantTypesTable extends Migration
 {
     public function up()
     {
-        Schema::create('user_types', function (Blueprint $table) {
+        Schema::create('participant_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description',30);
         });
@@ -16,6 +16,6 @@ class CreateUserTypesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('user_types');
+        Schema::dropIfExists('participant_types');
     }
 }

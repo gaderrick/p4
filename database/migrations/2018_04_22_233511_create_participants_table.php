@@ -11,7 +11,7 @@ class CreateParticipantsTable extends Migration
         Schema::create('participants', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('user_type_id');
+            $table->unsignedInteger('participant_type_id');
             $table->string('first_name', 80);
             $table->string('middle_name', 40)->nullable();
             $table->string('last_name', 80);

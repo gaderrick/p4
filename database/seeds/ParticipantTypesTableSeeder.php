@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\UserType;
+use App\ParticipantType;
 
-class UserTypesTableSeeder extends Seeder
+class ParticipantTypesTableSeeder extends Seeder
 {
     public function run()
     {
@@ -15,7 +15,7 @@ class UserTypesTableSeeder extends Seeder
         ];
 
         foreach ($userTypes as $userTypeData) {
-            $userType = new UserType();
+            $userType = new ParticipantType();
             $userType->timestamps = false;
             $userType->id = $userTypeData[0];
             $userType->description = $userTypeData[1];

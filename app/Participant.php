@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Participant extends Model
 {
-    public function participant()
+    public function participants()
     {
         return $this->belongsTo('App\User');
     }

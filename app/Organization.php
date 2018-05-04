@@ -10,7 +10,7 @@ class Organization extends Model
         return $this->hasMany('App\Roster');
     }
 
-    public function user(){
+    public function users(){
         return $this->belongsTo('App\User');
     }
 }

@@ -16,21 +16,21 @@ Route::get('/', function () {
 // This route will show everything that belongs to a user or is available for them to edit
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-// USERINFO ROUTES
-// CREATE: Show the form to add an organization; process the form to add a new organization
-Route::get('/participant/create','ParticipantsController@create')->name('participant.create')->middleware('auth');
-Route::post('/participant','ParticipantsController@store')->name('participant.store')->middleware('auth');
+// PARTICIPANT ROUTES
+// CREATE: Show the form to add a participant; process the form to add a new participant
+Route::get('/participant/create','ParticipantController@create')->name('participant.create')->middleware('auth');
+Route::post('/participant','ParticipantController@store')->name('participant.store')->middleware('auth');
 
 // READ: List all participants owned/managed by a user
-Route::get('/participant/index','ParticipantsController@index')->name('participant.index')->middleware('auth');
+Route::get('/participant/index','ParticipantController@index')->name('participant.index')->middleware('auth');
 
 // UPDATE: Show the edit form; process the form changes
-Route::get('/participant/{id}/edit','ParticipantsController@edit')->name('participant.edit')->middleware('auth');
-Route::put('/participant/{id}','ParticipantsController@update')->name('participant.update')->middleware('auth');
+Route::get('/participant/{id}/edit','ParticipantController@edit')->name('participant.edit')->middleware('auth');
+Route::put('/participant/{id}','ParticipantController@update')->name('participant.update')->middleware('auth');
 
 // DELETE: Show the delete form; process the deletion
-Route::get('/participant/{id}/delete','ParticipantsController@delete')->name('participant.delete')->middleware('auth');
-Route::delete('/participant/{id}','ParticipantsController@destroy')->name('participant.destroy')->middleware('auth');
+Route::get('/participant/{id}/delete','ParticipantController@delete')->name('participant.delete')->middleware('auth');
+Route::delete('/participant/{id}','ParticipantController@destroy')->name('participant.destroy')->middleware('auth');
 
 // ORGANIZATION ROUTES
 // CREATE: Show the form to add an organization; process the form to add a new organization
@@ -47,3 +47,19 @@ Route::put('/org/{id}','OrganizationController@update')->name('org.update')->mid
 // DELETE: Show the delete form; process the deletion
 Route::get('/org/{id}/delete','OrganizationController@delete')->name('org.delete')->middleware('auth');
 Route::delete('/org/{id}','OrganizationController@destroy')->name('org.destroy')->middleware('auth');
+
+// ROSTER ROUTES
+// CREATE: Show the form to add a roster; process the form to add a new roster
+Route::get('/roster/create','RosterController@create')->name('roster.create')->middleware('auth');
+Route::post('/roster','RosterController@store')->name('roster.store')->middleware('auth');
+
+// READ: List all rosters owned/managed by a organization
+Route::get('/roster/{id}/index','RosterController@index')->name('roster.index')->middleware('auth');
+
+// UPDATE: Show the edit form; process the form changes
+Route::get('/roster/{id}/edit','RosterController@edit')->name('roster.edit')->middleware('auth');
+Route::put('/roster/{id}','RosterController@update')->name('roster.update')->middleware('auth');
+
+// DELETE: Show the delete form; process the deletion
+Route::get('/roster/{id}/delete','RosterController@delete')->name('roster.delete')->middleware('auth');
+Route::delete('/roster/{id}','RosterController@destroy')->name('roster.destroy')->middleware('auth');

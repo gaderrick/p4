@@ -9,7 +9,7 @@ use App\State;
 use App\Country;
 use Illuminate\Http\Request;
 
-class ParticipantsController extends Controller
+class ParticipantController extends Controller
 {
     public function index()
     {

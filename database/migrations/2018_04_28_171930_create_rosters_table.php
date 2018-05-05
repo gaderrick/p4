@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateRostersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('rosters', function (Blueprint $table) {

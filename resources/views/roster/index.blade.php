@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('pagename')
-    List of Rosters
+    Manage a Roster
 @endsection
 
 @section('content')

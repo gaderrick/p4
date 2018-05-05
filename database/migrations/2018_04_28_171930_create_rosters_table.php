@@ -16,6 +16,7 @@ class CreateRostersTable extends Migration
             $table->text('description')->nullable();
             $table->string('magic_code',10)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

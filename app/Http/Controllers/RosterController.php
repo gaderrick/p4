@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\RosterType;
 use Auth;
 use App\Roster;
 use App\Organization;
@@ -9,10 +10,8 @@ use Illuminate\Http\Request;
 
 class RosterController extends Controller
 {
-    // list all of roster associated with an organization
-    // $id here is the organization_id
-    public function index($id)
-    {
+    // list all rosters for an organization ($id)
+    public function index($id){
         // first thing get current user's id from Auth and only show their user infos
         $current_user = auth()->user()->id;
 
@@ -29,7 +28,7 @@ class RosterController extends Controller
         }
 
         // get all of the rosters for the organization $id
-        $rosters = Roster::where('organization_id', '=', $id);
+        $rosters = Roster::where('organization_id', '=', $id)->get();
 
         if ($rosters->count() == 0) {
             return redirect()->route('roster.create')->with([
@@ -48,6 +47,15 @@ class RosterController extends Controller
 
     public function create(Request $request)
     {
+        $alert = $request->session()->get('alert');
+        $alert_color = $request->session()->get('alert_color');
+
+        return view('roster.create')->with([
+            'roster' => new Roster(),
+            'rosterTypesForDropdown' => RosterType::getForDropdown(),
+            'alert' => $alert,
+            'alert_color' => $alert_color,
+        ]);
     }
 
     public function store(Request $request)
@@ -68,5 +76,13 @@ class RosterController extends Controller
 
     public function destroy($id)
     {
+    }
+
+    // manage a roster associated with an organization
+    // $id here is the roster_id
+    public function manage($id)
+    {
+        // todo: this needs to be reworked; may combine with edit
+
     }
 }

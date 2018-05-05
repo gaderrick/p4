@@ -111,32 +111,32 @@ class ParticipantsTableSeeder extends Seeder
         ];
 
         $count = count($participants);
-        foreach ($participants as $participant) {
-            $userDetail = new Participant();
+        foreach ($participants as $participantData) {
+            $participant = new Participant();
 
-            $userDetail->user_id = $participant[0];
-            $userDetail->type_id = $participant[1];
-            $userDetail->first_name = $participant[2];
-            $userDetail->middle_name = $participant[3];
-            $userDetail->last_name = $participant[4];
-            $userDetail->sex = $participant[5];
-            $userDetail->email = $participant[6];
-            $userDetail->phone = $participant[7];
-            $userDetail->cell_phone = $participant[8];
-            $userDetail->street_address = $participant[9];
-            $userDetail->city = $participant[10];
-            $userDetail->state_id = $participant[11];
-            $userDetail->zip_code = $participant[12];
-            $userDetail->country_id = $participant[13];
-            $userDetail->date_of_birth = $participant[14];
-            $userDetail->note = $participant[15];
-            $userDetail->membership_number = $participant[16];
-            $userDetail->magic_code = $participant[17];
-            $userDetail->created_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();
-            $userDetail->updated_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();
-            $userDetail->deleted_at = null;
+            $participant->user_id = $participantData[0];
+            $participant->type_id = $participantData[1];
+            $participant->first_name = $participantData[2];
+            $participant->middle_name = $participantData[3];
+            $participant->last_name = $participantData[4];
+            $participant->sex = $participantData[5];
+            $participant->email = $participantData[6];
+            $participant->phone = $participantData[7];
+            $participant->cell_phone = $participantData[8];
+            $participant->street_address = $participantData[9];
+            $participant->city = $participantData[10];
+            $participant->state_id = $participantData[11];
+            $participant->zip_code = $participantData[12];
+            $participant->country_id = $participantData[13];
+            $participant->date_of_birth = $participantData[14];
+            $participant->note = $participantData[15];
+            $participant->membership_number = $participantData[16];
+            $participant->magic_code = $participantData[17];
+            $participant->created_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();
+            $participant->updated_at = Carbon\Carbon::now()->subDays($count)->toDateTimeString();
+            $participant->deleted_at = null;
 
-            $userDetail->save();
+            $participant->save();
 
             $count--;
         }

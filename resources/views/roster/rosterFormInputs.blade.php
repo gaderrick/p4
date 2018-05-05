@@ -15,14 +15,14 @@
 <div class="form-group">
     <label for='name' class="col-md-12 control-label">* Organization Name</label>
     <div class="col-md-12">
-        <input id='name' type='text' class="form-control" name='name' value='{{ old('name', $participant->name) }}'>
+        <input id='name' type='text' class="form-control" name='name' value='{{ old('name', $roster->name) }}'>
         @include('modules.error-field', ['field' => 'name'])
     </div>
 </div>
 <div class="form-group">
     <label for='description' class="col-md-12 control-label">Description</label>
     <div class="col-md-12">
-        <input id='description' type='text' class="form-control" name='description' value='{{ old('description', $participant->description) }}'>
+        <input id='description' type='text' class="form-control" name='description' value='{{ old('description', $roster->description) }}'>
         @include('modules.error-field', ['field' => 'description'])
     </div>
 </div>

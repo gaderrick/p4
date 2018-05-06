@@ -3,23 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Participant;
+use App\ParticipantType;
 use App\RosterType;
 use Auth;
 use App\Roster;
 use App\Organization;
+use App\State;
+use App\Country;
 use Illuminate\Http\Request;
 
 class RosterController extends Controller
 {
     // list all rosters for an organization ($id)
-    public function index($id){
+    public function index($id)
+    {
         // first thing get current user's id from Auth and only show their user infos
         $current_user = auth()->user()->id;
 
         // This query verifies that the current_user is the owner of the organization
         $organization = Organization::where('id', '=', $id)
             ->where('user_id', '=', $current_user)
-            ->get();
+            ->first();
 
         if ($organization->count() == 0) {
             return redirect()->route('org.index')->with([
@@ -42,7 +46,8 @@ class RosterController extends Controller
         // Return the list of rosters for the organization
         return view('roster.index')->with([
             'rosters' => $rosters,
-            'organization_id' => $id
+            'roster_types' => RosterType::getForDropdown(),
+            'organization' => $organization
         ]);
     }
 
@@ -71,7 +76,7 @@ class RosterController extends Controller
 
         // Magic code generator for participants
         $magicCode = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < 10; $i++) {
             $rand = mt_rand(0, $max);
@@ -175,13 +180,44 @@ class RosterController extends Controller
         ]);
     }
 
-    // manage a roster associated with an organization
-    public function manage()
+    public function addParticipant($id)
     {
-        $roster = Roster::find(2);
-        $participant = Participant::where('id','=',2)->first();
+        $roster = Roster::find($id);
+        $participants = $roster->participants()->get();
+
+        return view('roster.addParticipant')->with([
+            'roster' => $roster,
+            'states' => State::getForDashboard(),
+            'countries' => Country::getForDashboard(),
+            'participants' => $participants,
+            'participant_types' => ParticipantType::getForDashboard()
+        ]);
+    }
+
+    // manage a roster associated with an organization
+    public function saveParticipant(Request $request)
+    {
+        $this->validate($request, [
+            'roster_id' => 'required|integer',
+            'magic_code' => 'required|string|min:10|max:10'
+        ]);
+
+        $roster = Roster::find($request->roster_id);
+        $participant = Participant::where('magic_code', '=', $request->magic_code)->first();
+
+        if (!$participant) {
+            return redirect(route('roster.addParticipant', $request->roster_id))->with([
+                'alert' => 'Magic code '.$request->magic_code.' was not found.',
+                'alert_color' => 'yellow'
+            ]);
+        }
 
         $roster->participants()->attach($participant->id);
         $roster->save();
+
+        return redirect(route('roster.addParticipant', $roster->organization_id))->with([
+            'alert' => $participant->first_name.' '.$participant->last_name.' added to roster.',
+            'alert_color' => 'green'
+        ]);
     }
 }

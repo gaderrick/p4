@@ -57,9 +57,6 @@ Route::post('/roster','RosterController@store')->name('roster.store')->middlewar
 // READ: List all rosters owned/managed by a organization
 Route::get('/roster/{id}/index','RosterController@index')->name('roster.index')->middleware('auth');
 
-// MANAGE: Manage a roster
-Route::get('/roster/manage','RosterController@manage')->name('roster.manage')->middleware('auth');
-
 // UPDATE: Show the edit form; process the form changes
 Route::get('/roster/{id}/edit','RosterController@edit')->name('roster.edit')->middleware('auth');
 Route::put('/roster/{id}','RosterController@update')->name('roster.update')->middleware('auth');
@@ -67,3 +64,9 @@ Route::put('/roster/{id}','RosterController@update')->name('roster.update')->mid
 // DELETE: Show the delete form; process the deletion
 Route::get('/roster/{id}/delete','RosterController@delete')->name('roster.delete')->middleware('auth');
 Route::delete('/roster/{id}','RosterController@destroy')->name('roster.destroy')->middleware('auth');
+
+// ADD participant to a roster
+Route::get('roster/{id}/addParticipant','RosterController@addParticipant')->name('roster.addParticipant')->middleware('auth');
+
+// SAVE participant: Manage a roster
+Route::post('/roster/saveParticipant','RosterController@saveParticipant')->name('roster.saveParticipant')->middleware('auth');

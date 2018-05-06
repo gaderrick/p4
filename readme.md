@@ -41,7 +41,8 @@ __Delete__
   + Laravel authentication [documentation](https://laravel.com/docs/5.6/authentication#authentication-quickstart).
   + Integrated and modified a [Laravel Socialite github project](https://github.com/saqueib/social-auth) to implement social media authentication using this [documentation](http://www.qcode.in/oauth-login-using-facebook-google-twitter-and-github-with-laravel-socialite/).
   + Circle icons for social media links from [here](https://plus.google.com/u/0/+MohdSaquibAnsari) and [here](https://github.com/logos).
-  + [Icons for tables](https://freeiconshop.com/)
+  + Downloaded [icons for tables](https://freeiconshop.com/)
+  + Downloaded [add user icon](https://icons8.com/)
   + Used the site [www.generatedata.com](https://www.generatedata.com/) to create data sets for db seeders
   + List of state's and their abbreviations from [pastebin.com](https://pastebin.com/eJvwuHqC)
   + Looked up how to [pass a variable parameter](https://stackoverflow.com/questions/34556484/laravel-5-2-named-route-usage-with-variable-parameter) to a named route in a hyperlink.

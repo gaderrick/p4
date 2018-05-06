@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('pagename')
-    List of Organizations
+    Manage Organizations
 @endsection
 
 @section('content')

@@ -203,6 +203,7 @@ class RosterController extends Controller
         ]);
 
         $roster = Roster::find($request->roster_id);
+
         $participant = Participant::where('magic_code', '=', $request->magic_code)->first();
 
         if (!$participant) {
@@ -215,7 +216,7 @@ class RosterController extends Controller
         $roster->participants()->attach($participant->id);
         $roster->save();
 
-        return redirect(route('roster.addParticipant', $roster->organization_id))->with([
+        return redirect(route('roster.addParticipant', $request->roster_id))->with([
             'alert' => $participant->first_name . ' ' . $participant->last_name . ' added to roster.',
             'alert_color' => 'green'
         ]);

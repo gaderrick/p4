@@ -27,7 +27,7 @@
                             <input id="roster_id" name="roster_id" type="hidden"
                                    value="{{ old('roster_id',$roster->id) }}">
                             <button type="submit" class="btn btn-primary">
-                                Add Roster
+                                Add to Roster
                             </button>
                             <br>
                             <a href='{{ url()->previous() }}'>Cancel</a>

@@ -5,7 +5,11 @@
 @endsection
 
 @section('content')
+    <br><br>
+    <div class="container">
+        <div class="col-md-8 center" style="text-align: center">
+            Use the "PARTICIPANT" OR "ORGANIZATION" menu items above to get started.
+        </div>
+    </div>
     <br>
-    <a href="{{ route('org.index') }}">List of organizations</a><br>
-    <a href="{{ route('participant.index') }}">List of participants</a><br>
 @endsection

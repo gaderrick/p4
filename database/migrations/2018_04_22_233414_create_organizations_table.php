@@ -12,7 +12,6 @@ class CreateOrganizationsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('type_id');
-            $table->unsignedInteger('category');
             $table->string('name', 150);
             $table->string('street_address',150)->nullable();
             $table->string('city',100)->nullable();

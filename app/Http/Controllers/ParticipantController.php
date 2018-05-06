@@ -27,7 +27,10 @@ class ParticipantController extends Controller
         }
 
         return view('participant.index')->with([
-            'participants' => $participants
+            'participants' => $participants,
+            'participant_types' => ParticipantType::getForDashboard(),
+            'states' => State::getForDashboard(),
+            'countries' => Country::getForDashboard()
         ]);
     }
 
@@ -213,12 +216,11 @@ class ParticipantController extends Controller
         # Before we delete the participant we have to delete the roster association
         $participant->rosters()->detach();
 
-        # todo: look into how to do soft deletes; maybe add # to user_id?
         $participant->delete();
 
         return redirect(route('participant.index'))->with([
             'alert' => 'Participant ' . $participant->first_name . ' ' . $participant->last_name . ' was deleted.',
-            'alert_color' => 'red'
+            'alert_color' => 'green'
         ]);
     }
 }

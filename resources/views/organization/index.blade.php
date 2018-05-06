@@ -6,6 +6,7 @@
 
 @section('content')
     <br>
+    <div align="center"><h3>Organizations</h3></div>
     <div class="table-responsive">
         <table class="table">
             <thead>

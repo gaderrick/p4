@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Participant;
 use App\RosterType;
 use Auth;
 use App\Roster;
@@ -163,24 +164,24 @@ class RosterController extends Controller
     {
         $roster = Roster::find($id);
 
-        # Before we delete the participant we have to delete the roster association
-        # todo: detach the roster_participant info
+        # Before we delete the roster we have to delete the participants associated with it
         $roster->participants()->detach();
 
-        # todo: look into how to do soft deletes; maybe add # to user_id?
         $roster->delete();
 
         return redirect(route('roster.index', $roster->organization_id))->with([
             'alert' => 'Roster ' . $roster->name . ' was deleted.',
-            'alert_color' => 'red'
+            'alert_color' => 'green'
         ]);
     }
 
     // manage a roster associated with an organization
-    // $id here is the roster_id
-    public function manage($id)
+    public function manage()
     {
-        // todo: this needs to be reworked; may combine with edit
+        $roster = Roster::find(2);
+        $participant = Participant::where('id','=',2)->first();
 
+        $roster->participants()->attach($participant->id);
+        $roster->save();
     }
 }

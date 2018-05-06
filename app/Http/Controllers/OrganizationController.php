@@ -7,6 +7,7 @@ use App\OrganizationType;
 use App\Organization;
 use App\State;
 use App\Country;
+use App\Roster;
 use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
@@ -51,7 +52,6 @@ class OrganizationController extends Controller
     {
         $this->validate($request, [
             'type_id' => 'required|integer',
-            'category' => 'required|integer',
             'name' => 'required|string|min:2|max:150',
             'street_address' => 'string|nullable|max:150',
             'city' => 'string|nullable|max:100',
@@ -68,7 +68,7 @@ class OrganizationController extends Controller
         // Magic code generator for user_details
         // todo: Add the magic code to a utilities class; fix in user_details as well
         $magicCode = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < 10; $i++) {
             $rand = mt_rand(0, $max);
@@ -79,7 +79,6 @@ class OrganizationController extends Controller
         $organization = new Organization();
         $organization->user_id = auth()->user()->id;
         $organization->type_id = $request->type_id;
-        $organization->category = $request->category;
         $organization->name = $request->name;
         $organization->street_address = $request->street_address;
         $organization->city = $request->city;
@@ -100,7 +99,7 @@ class OrganizationController extends Controller
 
         // Send the user back to the list of organizations page w/ success message
         return redirect(route('org.index'))->with([
-            'alert' => 'Organization '.$organization->name.' created.',
+            'alert' => 'Organization ' . $organization->name . ' created.',
             'alert_color' => 'green'
         ]);
     }
@@ -134,7 +133,6 @@ class OrganizationController extends Controller
     {
         $this->validate($request, [
             'type_id' => 'required|integer',
-            'category' => 'required|integer',
             'name' => 'required|string|min:2|max:150',
             'street_address' => 'string|nullable|max:150',
             'city' => 'string|nullable|max:100',
@@ -152,7 +150,6 @@ class OrganizationController extends Controller
 
         # Save the user details to the database
         $organization->type_id = $request->type_id;
-        $organization->category = $request->category;
         $organization->name = $request->name;
         $organization->street_address = $request->street_address;
         $organization->city = $request->city;
@@ -199,16 +196,23 @@ class OrganizationController extends Controller
     {
         $organization = Organization::find($id);
 
-        # Before we delete the organization we may have to clean up the rosters a bit
-        # todo: ???
-        # $book->tags()->detach();
+        // clear out the roster relationships first
+        $roster = Roster::where('organization_id', '=', $id);
+        $rCount = $roster->count();
 
-        # todo: look into how to do soft deletes; maybe add # to organization_id?
+        if ($rCount > 0) {
+            return redirect(route('org.index'))->with([
+                'id', $id,
+                'alert' => 'Organization ' . $organization->name . ' still has ' . $rCount . ' rosters assoicated with it. Please delete them before proceeding.',
+                'alert_color' => 'red'
+            ]);
+        }
+
         $organization->delete();
 
         return redirect(route('org.index'))->with([
-            'alert' => 'Organization '.$organization->name.' was deleted.',
-            'alert_color' => 'red'
+            'alert' => 'Organization ' . $organization->name . ' was deleted.',
+            'alert_color' => 'green'
         ]);
     }
 }

@@ -17,4 +17,15 @@ class ParticipantType extends Model
 
         return $participantTypesForDropdown;
     }
+
+    public static function getForDashboard(){
+        $participantTypes = self::all();
+
+        $participantTypesForDashboard = [];
+        foreach ($participantTypes as $participantType) {
+            $participantTypesForDashboard[$participantType->id] = $participantType->description;
+        }
+
+        return $participantTypesForDashboard;
+    }
 }

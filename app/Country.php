@@ -17,4 +17,15 @@ class Country extends Model
 
         return $countriesForDropdown;
     }
+
+    public static function getForDashboard(){
+        $countries = self::all();
+
+        $countriesForDashboard = [];
+        foreach ($countries as $country) {
+            $countriesForDashboard[$country->id] = $country->abbreviation;
+        }
+
+        return $countriesForDashboard;
+    }
 }

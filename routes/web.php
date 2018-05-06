@@ -58,7 +58,7 @@ Route::post('/roster','RosterController@store')->name('roster.store')->middlewar
 Route::get('/roster/{id}/index','RosterController@index')->name('roster.index')->middleware('auth');
 
 // MANAGE: Manage a roster
-Route::get('/roster/{id}/manage','RosterController@manage')->name('roster.manage')->middleware('auth');
+Route::get('/roster/manage','RosterController@manage')->name('roster.manage')->middleware('auth');
 
 // UPDATE: Show the edit form; process the form changes
 Route::get('/roster/{id}/edit','RosterController@edit')->name('roster.edit')->middleware('auth');

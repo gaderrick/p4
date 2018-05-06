@@ -12,13 +12,6 @@
     </div>
 </div>
 <div class="form-group">
-    <label for='category' class="col-md-12 control-label">* Category</label>
-    <div class="col-md-12">
-        <input id='category' type='text' class="form-control" name='category' value='{{ old('category', $organization->category) }}'>
-        @include('modules.error-field', ['field' => 'category'])
-    </div>
-</div>
-<div class="form-group">
     <label for='name' class="col-md-12 control-label">* Organization Name</label>
     <div class="col-md-12">
         <input id='name' type='text' class="form-control" name='name' value='{{ old('name', $organization->name) }}'>

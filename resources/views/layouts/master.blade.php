@@ -30,7 +30,7 @@
                 <a href="{{ route('register') }}" style="color:white">REGISTER</a>
             @else
                 <a href="{{ route('home') }}" style="color:white">HOME</a> |
-                <a href="{{ route('userdetail.index') }}" style="color:white">PARTICIPANTS</a> |
+                <a href="{{ route('participant.index') }}" style="color:white">PARTICIPANTS</a> |
                 <a href="{{ route('org.index') }}" style="color:white">ORGANIZATIONS</a> |
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                    style="color:white">

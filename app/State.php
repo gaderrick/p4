@@ -17,4 +17,15 @@ class State extends Model
 
         return $statesForDropdown;
     }
+
+    public static function getForDashboard(){
+        $states = self::all();
+
+        $statesForDashboard = [];
+        foreach ($states as $state) {
+            $statesForDashboard[$state->id] = $state->abbreviation;
+        }
+
+        return $statesForDashboard;
+    }
 }

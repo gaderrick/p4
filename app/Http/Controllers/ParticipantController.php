@@ -49,27 +49,27 @@ class ParticipantController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'type_id' => 'required|integer',
-        'first_name' => 'required|string|min:2|max:80',
-        'middle_name' => 'string|nullable|max:40',
-        'last_name' => 'required|string|min:2|max:80',
-        'sex' => 'string|nullable|max:1',
-        'email' => 'email|nullable|max:255',
-        'phone' => 'string|nullable|max:30',
-        'cell_phone' => 'string|nullable|max:30',
-        'street_address' => 'string|nullable|max:150',
-        'city' => 'string|nullable|max:100',
-        'state_id' => 'integer|nullable',
-        'zip_code' => 'string|nullable|max:10',
-        'country_id' => 'integer|nullable',
-        'date_of_birth' => 'date|date_format:Y-m-d|nullable',
-        'note' => 'string|nullable|max:50',
-        'membership_number' => 'string|nullable|max:20'
-    ]);
+            'type_id' => 'required|integer',
+            'first_name' => 'required|string|min:2|max:80',
+            'middle_name' => 'string|nullable|max:40',
+            'last_name' => 'required|string|min:2|max:80',
+            'sex' => 'string|nullable|max:1',
+            'email' => 'email|nullable|max:255',
+            'phone' => 'string|nullable|max:30',
+            'cell_phone' => 'string|nullable|max:30',
+            'street_address' => 'string|nullable|max:150',
+            'city' => 'string|nullable|max:100',
+            'state_id' => 'integer|nullable',
+            'zip_code' => 'string|nullable|max:10',
+            'country_id' => 'integer|nullable',
+            'date_of_birth' => 'date|date_format:Y-m-d|nullable',
+            'note' => 'string|nullable|max:50',
+            'membership_number' => 'string|nullable|max:20'
+        ]);
 
         // Magic code generator for participants
         $magicCode = "";
-        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < 10; $i++) {
             $rand = mt_rand(0, $max);
@@ -210,15 +210,14 @@ class ParticipantController extends Controller
     {
         $participant = Participant::find($id);
 
-        # Before we delete the book we have to delete any tag associations
-        # todo: detach the roster_participant info
-        # $book->tags()->detach();
+        # Before we delete the participant we have to delete the roster association
+        $participant->rosters()->detach();
 
         # todo: look into how to do soft deletes; maybe add # to user_id?
         $participant->delete();
 
         return redirect(route('participant.index'))->with([
-            'alert' => 'Participant '.$participant->first_name.' '.$participant->last_name.' was deleted.',
+            'alert' => 'Participant ' . $participant->first_name . ' ' . $participant->last_name . ' was deleted.',
             'alert_color' => 'red'
         ]);
     }

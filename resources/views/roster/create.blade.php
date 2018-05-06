@@ -19,6 +19,8 @@
                             <button type="submit" class="btn btn-primary">
                                 Add Roster
                             </button>
+                            <br>
+                            <a href='{{ url()->previous() }}'>Cancel</a>
                         </div>
                     </div>
                 </form>

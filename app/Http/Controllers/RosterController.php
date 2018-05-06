@@ -31,7 +31,7 @@ class RosterController extends Controller
         $rosters = Roster::where('organization_id', '=', $id)->get();
 
         if ($rosters->count() == 0) {
-            return redirect()->route('roster.create')->with([
+            return redirect()->route('roster.create', $id)->with([
                 'alert' => 'No rosters found for this organization. You may add it now.',
                 'alert_color' => 'green',
                 'organization_id' => $id
@@ -41,11 +41,11 @@ class RosterController extends Controller
         // Return the list of rosters for the organization
         return view('roster.index')->with([
             'rosters' => $rosters,
-            'organization' => $organization
+            'organization_id' => $id
         ]);
     }
 
-    public function create(Request $request)
+    public function create(Request $request, $id)
     {
         $alert = $request->session()->get('alert');
         $alert_color = $request->session()->get('alert_color');
@@ -53,6 +53,7 @@ class RosterController extends Controller
         return view('roster.create')->with([
             'roster' => new Roster(),
             'rosterTypesForDropdown' => RosterType::getForDropdown(),
+            'organization_id' => $id,
             'alert' => $alert,
             'alert_color' => $alert_color,
         ]);
@@ -60,22 +61,119 @@ class RosterController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'organization_id' => 'required|integer',
+            'type_id' => 'required|integer',
+            'name' => 'required|string|min:2|max:150',
+            'description' => 'string'
+        ]);
+
+        // Magic code generator for participants
+        $magicCode = "";
+        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $max = count($characters) - 1;
+        for ($i = 0; $i < 10; $i++) {
+            $rand = mt_rand(0, $max);
+            $magicCode .= $characters[$rand];
+        }
+
+        # Save the user details to the database
+        $roster = new Roster();
+        $roster->organization_id = $request->organization_id;
+        $roster->type_id = $request->type_id;
+        $roster->name = $request->name;
+        $roster->description = $request->description;
+        $roster->magic_code = $magicCode;
+
+        $roster->save();
+
+//        # Logging code just as proof of concept that this method is being invoked
+//        # Log::info('Saved user details for ' . $participant->user_id);
+
+//        # Send the user back to the list of participants page w/ success message
+        return redirect(route('roster.index', $request->organization_id))->with([
+            'alert' => 'Saved roster details for ' . $roster->name,
+            'alert_color' => 'green'
+        ]);
     }
 
     public function edit($id)
     {
+        $roster = Roster::find($id);
+
+        # Handle the case where we can't find the given participant
+        if (!$roster) {
+            return redirect(route('org.index'))->with([
+                'alert' => 'No matching roster was found.',
+                'alert_color' => 'yellow'
+            ]);
+        }
+
+        return view('roster.edit')->with([
+            'roster' => $roster,
+            'rosterTypesForDropdown' => RosterType::getForDropdown(),
+            'organization_id' => $roster->organization_id
+        ]);
     }
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'organization_id' => 'required|integer',
+            'type_id' => 'required|integer',
+            'name' => 'required|string|min:2|max:150',
+            'description' => 'string'
+        ]);
+
+        # Fetch the record
+        $roster = Roster::find($id);
+
+        # Update the roster details
+        // $roster->organization_id = $request->organization_id;
+        $roster->type_id = $request->type_id;
+        $roster->name = $request->name;
+        $roster->description = $request->description;
+
+        $roster->save();
+
+        return redirect(route('roster.edit', $roster->id))->with([
+            'alert' => 'Your changes were saved',
+            'alert_color' => 'green'
+        ]);
     }
 
     public function delete($id)
     {
+        $roster = Roster::find($id);
+
+        # Handle the case where we can't find the given participant
+        if (!$roster) {
+            return redirect(route('org.index'))->with([
+                'alert' => 'No matching roster was found.',
+                'alert_color' => 'yellow'
+            ]);
+        }
+
+        return view('roster.delete')->with([
+            'roster' => $roster,
+        ]);
     }
 
     public function destroy($id)
     {
+        $roster = Roster::find($id);
+
+        # Before we delete the participant we have to delete the roster association
+        # todo: detach the roster_participant info
+        $roster->participants()->detach();
+
+        # todo: look into how to do soft deletes; maybe add # to user_id?
+        $roster->delete();
+
+        return redirect(route('roster.index', $roster->organization_id))->with([
+            'alert' => 'Roster ' . $roster->name . ' was deleted.',
+            'alert_color' => 'red'
+        ]);
     }
 
     // manage a roster associated with an organization

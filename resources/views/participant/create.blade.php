@@ -19,6 +19,8 @@
                             <button type="submit" class="btn btn-primary">
                                 Add Participant
                             </button>
+                            <br>
+                            <a href='{{ url()->previous() }}'>Cancel</a>
                         </div>
                     </div>
                 </form>

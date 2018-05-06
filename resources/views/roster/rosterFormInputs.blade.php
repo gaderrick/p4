@@ -9,11 +9,13 @@
             @endforeach
         </select>
         @include('modules.error-field', ['field' => 'type_id'])
+
+        <input id="organization_id" name="organization_id" type="hidden" value="{{ (old('organization_id',$organization_id)) }}">
     </div>
 </div>
 
 <div class="form-group">
-    <label for='name' class="col-md-12 control-label">* Organization Name</label>
+    <label for='name' class="col-md-12 control-label">* Roster Name</label>
     <div class="col-md-12">
         <input id='name' type='text' class="form-control" name='name' value='{{ old('name', $roster->name) }}'>
         @include('modules.error-field', ['field' => 'name'])

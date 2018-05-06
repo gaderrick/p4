@@ -18,9 +18,11 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <!-- todo: make the following button red -->
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-danger">
                                     Delete Participant
                                 </button>
+                                <br>
+                                <a href='{{ url()->previous() }}'>Cancel</a>
                             </div>
                         </div>
                     </div>

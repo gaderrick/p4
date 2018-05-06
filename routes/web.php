@@ -50,7 +50,8 @@ Route::delete('/org/{id}','OrganizationController@destroy')->name('org.destroy')
 
 // ROSTER ROUTES
 // CREATE: Show the form to add a roster; process the form to add a new roster
-Route::get('/roster/create','RosterController@create')->name('roster.create')->middleware('auth');
+// Here, the id is the organization
+Route::get('/roster/{id}/create','RosterController@create')->name('roster.create')->middleware('auth');
 Route::post('/roster','RosterController@store')->name('roster.store')->middleware('auth');
 
 // READ: List all rosters owned/managed by a organization

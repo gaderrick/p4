@@ -17,4 +17,15 @@ class OrganizationType extends Model
 
         return $organizationTypesForDropdown;
     }
+
+    public static function getForDashboard(){
+        $organizationTypes = self::all();
+
+        $organizationsForDashboard = [];
+        foreach ($organizationTypes as $organizationType) {
+            $organizationsForDashboard[$organizationType->id] = $organizationType->description;
+        }
+
+        return $organizationsForDashboard;
+    }
 }

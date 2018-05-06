@@ -20,6 +20,8 @@
                             <button type="submit" class="btn btn-primary">
                                 Update Organization
                             </button>
+                            <br>
+                            <a href='{{ url()->previous() }}'>Cancel</a>
                         </div>
                     </div>
                 </form>

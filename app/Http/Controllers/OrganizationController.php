@@ -26,7 +26,9 @@ class OrganizationController extends Controller
         }
 
         return view('organization.index')->with([
-            'organizations' => $organizations
+            'organizations' => $organizations,
+            'states' => State::getForDashboard(),
+            'org_types' => OrganizationType::getForDashboard()
         ]);
     }
 

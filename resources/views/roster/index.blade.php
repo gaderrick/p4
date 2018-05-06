@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <a href='{{ route('roster.create') }}'>Add a new roster</a><br>
+    <a href='{{ route('roster.create', $organization_id) }}'>Add a new roster</a><br>
     <br>
     or
     <br>

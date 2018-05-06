@@ -14,13 +14,15 @@
 
                     <div style="text-align: center">
                         <h3>Delete an Existing Roster</h3>
-                        Are you sure you want to delete {{ $roster->name }}?<br><br>
+                        Are you sure you want to delete the roster: {{ $roster->name }}?<br><br>
                         <div class="form-group">
                             <div class="col-md-12">
                                 <!-- todo: make the following button red -->
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-danger">
                                     Delete Roster
                                 </button>
+                                <br>
+                                <a href='{{ url()->previous() }}'>Cancel</a>
                             </div>
                         </div>
                     </div>

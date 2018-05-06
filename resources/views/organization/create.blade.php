@@ -19,6 +19,8 @@
                             <button type="submit" class="btn btn-primary">
                                 Add Organization
                             </button>
+                            <br>
+                            <a href='{{ url()->previous() }}'>Cancel</a>
                         </div>
                     </div>
                 </form>

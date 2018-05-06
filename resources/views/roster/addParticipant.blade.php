@@ -70,10 +70,10 @@
                     <td>{{ $participant->membership_number }}</td>
                     <td>{{ $participant->magic_code }}</td>
                     <td>
-                        <a href=''>
+                        <!--a href=''-->
                             <img style="opacity: .3" width="28" src="{{ asset('images/email.png') }}" alt="E-mail">
-                        </a>
-                        <a href='{{ route('participant.delete', $participant->id) }}'>
+                        <!-- /a -->
+                        <a href='{{ route('roster.removeParticipant', [$roster->id, $participant->id]) }}'>
                             <img width="30" src="{{ asset('images/trash.png') }}" alt="Trash">
                         </a>
                     </td>

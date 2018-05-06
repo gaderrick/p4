@@ -207,7 +207,7 @@ class RosterController extends Controller
 
         if (!$participant) {
             return redirect(route('roster.addParticipant', $request->roster_id))->with([
-                'alert' => 'Magic code '.$request->magic_code.' was not found.',
+                'alert' => 'Magic code ' . $request->magic_code . ' was not found.',
                 'alert_color' => 'yellow'
             ]);
         }
@@ -216,7 +216,24 @@ class RosterController extends Controller
         $roster->save();
 
         return redirect(route('roster.addParticipant', $roster->organization_id))->with([
-            'alert' => $participant->first_name.' '.$participant->last_name.' added to roster.',
+            'alert' => $participant->first_name . ' ' . $participant->last_name . ' added to roster.',
+            'alert_color' => 'green'
+        ]);
+    }
+
+    public function removeParticipant($id, $pid)
+    {
+        $roster = Roster::find($id);
+        $participant = Participant::find($pid);
+
+        $roster->participants()->detach($participant->id);
+
+        # Before we delete the participant we have to delete the roster association
+
+        $participant->update();
+
+        return redirect(route('roster.addParticipant', $id))->with([
+            'alert' => 'Participant ' . $participant->first_name . ' ' . $participant->last_name . ' was removed from the roster.',
             'alert_color' => 'green'
         ]);
     }

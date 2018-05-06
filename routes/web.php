@@ -70,3 +70,6 @@ Route::get('roster/{id}/addParticipant','RosterController@addParticipant')->name
 
 // SAVE participant: Manage a roster
 Route::post('/roster/saveParticipant','RosterController@saveParticipant')->name('roster.saveParticipant')->middleware('auth');
+
+// REMOVE participant from roster
+Route::get('/roster/{id}/removeParticipant/{pid}','RosterController@removeParticipant')->name('roster.removeParticipant')->middleware('auth');

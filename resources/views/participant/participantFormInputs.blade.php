@@ -81,7 +81,7 @@
 </div>
 
 <div class='form-group'>
-    <label for='state_id' class='col-md-12 control-label'>State</label>
+    <label for='state_id' class='col-md-12 control-label'>* State</label>
     <div class='col-md-12'>
         <select id='state_id' name='state_id' class='form-control'>
             <option value=''>Choose one...</option>
@@ -100,7 +100,7 @@
     </div>
 </div>
 <div class='form-group'>
-    <label for='country_id' class='col-md-12 control-label'>Country</label>
+    <label for='country_id' class='col-md-12 control-label'>* Country</label>
     <div class='col-md-12'>
         <select id='country_id' name='country_id' class='form-control'>
             <option value=''>Choose one...</option>

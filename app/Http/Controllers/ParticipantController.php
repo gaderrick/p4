@@ -62,9 +62,9 @@ class ParticipantController extends Controller
             'cell_phone' => 'string|nullable|max:30',
             'street_address' => 'string|nullable|max:150',
             'city' => 'string|nullable|max:100',
-            'state_id' => 'integer|nullable',
+            'state_id' => 'required|integer',
             'zip_code' => 'string|nullable|max:10',
-            'country_id' => 'integer|nullable',
+            'country_id' => 'required|integer',
             'date_of_birth' => 'date|date_format:Y-m-d|nullable',
             'note' => 'string|nullable|max:50',
             'membership_number' => 'string|nullable|max:20'
@@ -150,9 +150,9 @@ class ParticipantController extends Controller
             'cell_phone' => 'string|nullable|max:30',
             'street_address' => 'string|nullable|max:150',
             'city' => 'string|nullable|max:100',
-            'state_id' => 'integer|nullable',
+            'state_id' => 'required|integer',
             'zip_code' => 'string|nullable|max:10',
-            'country_id' => 'integer|nullable',
+            'country_id' => 'required|integer',
             'date_of_birth' => 'date|date_format:Y-m-d|nullable',
             'note' => 'string|nullable|max:50',
             'membership_number' => 'string|nullable|max:20'

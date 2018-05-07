@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="col-md-6 center">
+    <div class='container'>
+        <div class='col-md-6 center'>
             <div>
                 <form method="POST" action="{{ route('org.store') }}">
                     {{ csrf_field() }}

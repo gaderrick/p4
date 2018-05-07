@@ -6,27 +6,27 @@
 
 @section('content')
     <br>
-    <div align="center"><h3>Add Participants to Roster<br>"{{ $roster->name }}"</h3></div>
+    <div align='center'><h3>Add Participants to Roster<br>"{{ $roster->name }}"</h3></div>
 
-    <div class="container">
-        <div class="col-md-6 center">
+    <div class='container'>
+        <div class='col-md-6 center'>
             <div>
-                <form method="POST" action="{{ route('roster.saveParticipant') }}">
+                <form method='POST' action='{{ route('roster.saveParticipant') }}'>
                     {{ csrf_field() }}
 
-                    <div class="form-group">
-                        <label for='magic_code' class="col-md-12 control-label">* Participant Magic Code</label>
-                        <div class="col-md-12">
-                            <input id='name' type='text' class="form-control" name='magic_code'
+                    <div class='form-group'>
+                        <label for='magic_code' class='col-md-12 control-label'>* Participant Magic Code</label>
+                        <div class='col-md-12'>
+                            <input id='name' type='text' class='form-control' name='magic_code'
                                    value='{{ old('magic_code') }}'>
                             @include('modules.error-field', ['field' => 'magic_code'])
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <input id="roster_id" name="roster_id" type="hidden"
-                                   value="{{ old('roster_id',$roster->id) }}">
-                            <button type="submit" class="btn btn-primary">
+                    <div class='form-group'>
+                        <div class='col-md-12'>
+                            <input id='roster_id' name='roster_id' type='hidden'
+                                   value='{{ old('roster_id',$roster->id) }}'>
+                            <button type='submit' class='btn btn-primary'>
                                 Add to Roster
                             </button>
                             <br>
@@ -39,8 +39,8 @@
             </div>
         </div>
     </div>
-    <div class="table-responsive">
-        <table class="table">
+    <div class='table-responsive'>
+        <table class='table'>
             <thead>
             <tr>
                 <th>#</th>
@@ -71,10 +71,10 @@
                     <td>{{ $participant->magic_code }}</td>
                     <td>
                         <!--a href=''-->
-                            <img style="opacity: .3" width="28" src="{{ asset('images/email.png') }}" alt="E-mail">
+                            <img style='opacity: .3' width='28' src='{{ asset('images/email.png') }}' alt='E-mail'>
                         <!-- /a -->
                         <a href='{{ route('roster.removeParticipant', [$roster->id, $participant->id]) }}'>
-                            <img width="30" src="{{ asset('images/trash.png') }}" alt="Trash">
+                            <img width='30' src='{{ asset('images/trash.png') }}' alt='Trash'>
                         </a>
                     </td>
                 </tr>

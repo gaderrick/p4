@@ -6,9 +6,9 @@
 
 @section('content')
     <br>
-    <div align="center"><h3>Rosters for {{ $organization->name }}</h3></div>
-    <div class="table-responsive">
-        <table class="table">
+    <div align='center'><h3>Rosters for {{ $organization->name }}</h3></div>
+    <div class='table-responsive'>
+        <table class='table'>
             <thead>
             <tr>
                 <th>#</th>
@@ -29,13 +29,13 @@
                     <td>{{ $roster->magic_code }}</td>
                     <td>
                         <a href='{{ route('roster.edit', $roster->id) }}'>
-                            <img width="30" src="{{ asset('images/pencil.png') }}" alt="Edit">
+                            <img width='30' src='{{ asset('images/pencil.png') }}' alt='Edit'>
                         </a>
                         <a href='{{ route('roster.delete', $roster->id) }}'>
-                            <img width="30" src="{{ asset('images/trash.png') }}" alt="Trash">
+                            <img width='30' src='{{ asset('images/trash.png') }}' alt='Trash'>
                         </a>
                         <a href='{{ route('roster.addParticipant', $roster->id) }}'>
-                            <img width="30" src="{{ asset('images/add_user.png') }}" alt="Add Participants">
+                            <img width='30' src='{{ asset('images/add_user.png') }}' alt='Add Participants'>
                         </a>
                     </td>
                 </tr>

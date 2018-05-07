@@ -67,7 +67,7 @@ class OrganizationController extends Controller
 
         // Magic code generator for user_details
         // todo: Add the magic code to a utilities class; fix in user_details as well
-        $magicCode = "";
+        $magicCode = '';
         $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < 10; $i++) {

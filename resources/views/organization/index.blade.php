@@ -6,9 +6,9 @@
 
 @section('content')
     <br>
-    <div align="center"><h3>Organizations</h3></div>
-    <div class="table-responsive">
-        <table class="table">
+    <div align='center'><h3>Organizations</h3></div>
+    <div class='table-responsive'>
+        <table class='table'>
             <thead>
             <tr>
                 <th>#</th>
@@ -32,14 +32,14 @@
                     <td>{{ $organization->membership_number }}</td>
                     <td>{{ $organization->magic_code }}</td>
                     <td>
-                        <a href='{{ route('roster.index', $organization->id) }}'>
-                            <img width="30" src="{{ asset('images/roster.png') }}" alt="Rosters">
+                        <a href='{{ route('roster.index', $organization->id) }}' style='text-decoration: none'>
+                            <img width='30' src='{{ asset('images/roster.png') }}' alt='Rosters'>
                         </a>
-                        <a href='{{ route('org.edit', $organization->id) }}'>
-                            <img width="30" src="{{ asset('images/pencil.png') }}" alt="Edit">
+                        <a href='{{ route('org.edit', $organization->id) }}' style='text-decoration: none'>
+                            <img width='30' src='{{ asset('images/pencil.png') }}' alt='Edit'>
                         </a>
-                        <a href='{{ route('org.delete', $organization->id) }}'>
-                            <img width="30" src="{{ asset('images/trash.png') }}" alt="Trash">
+                        <a href='{{ route('org.delete', $organization->id) }}' style='text-decoration: none'>
+                            <img width='30' src='{{ asset('images/trash.png') }}' alt='Trash'>
                         </a>
                     </td>
                 </tr>

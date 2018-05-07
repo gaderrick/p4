@@ -5,18 +5,18 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="col-md-6 center">
+    <div class='container'>
+        <div class='col-md-6 center'>
             <div>
-                <form method="POST" action="{{ route('roster.store') }}">
+                <form method='POST' action='{{ route('roster.store') }}'>
                     {{ csrf_field() }}
 
-                    <div style="text-align: center"><h3>Create a New Roster</h3></div>
+                    <div style='text-align: center'><h3>Create a New Roster</h3></div>
                     @include('roster.rosterFormInputs')
 
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary">
+                    <div class='form-group'>
+                        <div class='col-md-12'>
+                            <button type='submit' class='btn btn-primary'>
                                 Add Roster
                             </button>
                             <br>

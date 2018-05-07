@@ -71,7 +71,7 @@ class ParticipantController extends Controller
         ]);
 
         // Magic code generator for participants
-        $magicCode = "";
+        $magicCode = '';
         $characters = array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9'));
         $max = count($characters) - 1;
         for ($i = 0; $i < 10; $i++) {

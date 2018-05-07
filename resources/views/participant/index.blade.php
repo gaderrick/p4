@@ -6,9 +6,9 @@
 
 @section('content')
     <br>
-    <div align="center"><h3>Participants</h3></div>
-    <div class="table-responsive">
-        <table class="table">
+    <div align='center'><h3>Participants</h3></div>
+    <div class='table-responsive'>
+        <table class='table'>
             <thead>
             <tr>
                 <th>#</th>
@@ -38,15 +38,15 @@
                     <td>{{ $participant->membership_number }}</td>
                     <td>{{ $participant->magic_code }}</td>
                     <td>
-                        <a href=''>
-                            <img style="opacity: .3" width="28" src="{{ asset('images/email.png') }}" alt="E-mail">
+                        <a href='{{ route('participant.edit', $participant->id) }}' style='text-decoration: none'>
+                            <img width='30' src='{{ asset('images/pencil.png') }}' alt='Edit'>
                         </a>
-                        <a href='{{ route('participant.edit', $participant->id) }}'>
-                            <img width="30" src="{{ asset('images/pencil.png') }}" alt="Edit">
+                        <a href='{{ route('participant.delete', $participant->id) }}' style='text-decoration: none'>
+                            <img width='30' src='{{ asset('images/trash.png') }}' alt='Trash'>
                         </a>
-                        <a href='{{ route('participant.delete', $participant->id) }}'>
-                            <img width="30" src="{{ asset('images/trash.png') }}" alt="Trash">
-                        </a>
+                        <!--a href='' style='text-decoration: none' -->
+                        <img style='opacity: .3' width='28' src='{{ asset('images/email.png') }}' alt='E-mail'>
+                        <!-- /a -->
                     </td>
                 </tr>
             @endforeach

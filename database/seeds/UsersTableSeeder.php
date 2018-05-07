@@ -9,7 +9,7 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             ['Jerry Derrick','jerry.derrick@gmail.com','testpassword'],
-            ['Susan Buck','susanbuck@fas.harvard.edu ','teacherpassword'],
+            ['Susan Buck','susanbuck@fas.harvard.edu','teacherpassword'],
             ['Katrina Derrick','katrina.derrick@gmail.com','testpassword'],
             ['Justice Derrick','justiceaderrick@xyz.com','testpassword'],
             ['Harmony Derrick','harmonyderrick@xyz.com','testpassword']

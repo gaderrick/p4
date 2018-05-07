@@ -14,7 +14,8 @@ Pivot table(s):
 ## CRUD
 *All of the below instructions assume that the user has logged into the application by either registering a new account, 
 authenticating with social media credentials (Oauth), or logging in with an email/password. Authentication is enforced 
-across all application features and verified before each action.*
+across all application features and verified before each action. The example steps require logging in as either 
+susanbuck@fas.harvard.edu, or a social media Oauth associated with susanbuck@fas.harvard.edu (for prefill purposes).*
 
 __Create__
   + Visit <https://p4.gaderrick.me/participant/create>
@@ -66,7 +67,8 @@ __Delete__
   + When you log into the web application, there are several ways to login:
     + Login with the email `susanbuck@fas.harvard.edu` and the password provided by email
     + Login/authenticate with one of the social media Oauth logins
-    + `Register` a new account (w/ an email other than `susanbuck@fas.harvard.edu`)
+    + `Register` a new account (w/ an email other than `susanbuck@fas.harvard.edu`); logging in with with option will not 
+    benefit from the seeded data
   + There is data seeded for your email address `susanbuck@fas.harvard.edu`. If you authenticate with a social media login 
   associated with your email, it will correctly map to the email account.
   + I did not have time to finish the email feature I wanted to complete, but a transparent icon is there as a placeholder

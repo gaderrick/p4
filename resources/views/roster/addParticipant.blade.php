@@ -6,7 +6,7 @@
 
 @section('content')
     <br>
-    <div align='center'><h3>Add Participants to Roster<br>"{{ $roster->name }}"</h3></div>
+    <div style='text-align: center'><h3>Add Participants to Roster<br>"{{ $roster->name }}"</h3></div>
 
     <div class='container'>
         <div class='col-md-6 center'>

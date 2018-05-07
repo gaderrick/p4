@@ -15,7 +15,7 @@
                     {{ csrf_field() }}
 
                     <div class='form-group'>
-                        <label for='magic_code' class='col-md-12 control-label'>* Participant Magic Code</label>
+                        <label class='col-md-12 control-label'>* Participant Magic Code</label>
                         <div class='col-md-12'>
                             <input id='name' type='text' class='form-control' name='magic_code'
                                    value='{{ old('magic_code') }}'>

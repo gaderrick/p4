@@ -6,7 +6,7 @@
 
 @section('content')
     <br>
-    <div align='center'><h3>Organizations</h3></div>
+    <div style='text-align: center'><h3>Organizations</h3></div>
     <div class='table-responsive'>
         <table class='table'>
             <thead>
@@ -47,7 +47,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <td colspan='9'>
+                <td colspan='8'>
                     <a href='{{ route('org.create') }}'>Add a new organization</a>
                 </td>
             </tr>

@@ -6,7 +6,7 @@
 
 @section('content')
     <br>
-    <div align='center'><h3>Rosters for {{ $organization->name }}</h3></div>
+    <div style='text-align: center'><h3>Rosters for {{ $organization->name }}</h3></div>
     <div class='table-responsive'>
         <table class='table'>
             <thead>

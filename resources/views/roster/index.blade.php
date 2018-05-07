@@ -43,7 +43,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <td colspan='9'>
+                <td colspan='6'>
                     <a href='{{ route('roster.create', $organization->id) }}'>Add a new roster</a>
                 </td>
             </tr>

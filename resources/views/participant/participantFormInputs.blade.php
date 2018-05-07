@@ -34,7 +34,7 @@
     </div>
 </div>
 <div class='form-group'>
-    <label for='sex' class='col-md-12 control-label'>Sex</label>
+    <label for='sex' class='col-md-12 control-label'>* Sex</label>
     <div class='col-md-12'>
         <select id='sex' name='sex' class='form-control'>
             <option value=''>Choose one...</option>

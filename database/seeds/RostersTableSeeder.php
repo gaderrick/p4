@@ -10,8 +10,8 @@ class RostersTableSeeder extends Seeder
         $rosters = [
             [1,1,'Roster #1','Note','abcde12345'],
             [2,2,'Roster #2','Note','qwert12345'],
-            [1,1,'Roster #3','Note','asdfg12345'],
-            [3,2,'Roster #4','Note','poiuy09876']
+            [3,1,'Roster #3','Note','asdfg12345'],
+            [4,2,'Roster #4','Note','poiuy09876']
         ];
 
         $count = count($rosters);

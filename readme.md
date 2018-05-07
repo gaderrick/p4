@@ -33,7 +33,8 @@ __Update__
   + Observe confirmation message
   
 __Delete__
-  + Visit <https://p4.gaderrick.me/roster/1/index> to see a list of the rosters associated with an organization; 
+  + Visit <https://p4.gaderrick.me/org/index> to see a list of the organizations for your user
+  + Click on the clipboard icon to view the roster(s) associated with the the organization  
   + Click the trashcan icon in the actions column of a roster
   + Click the `Delete` button on the follow on confirmation page
   + Observe confirmation message

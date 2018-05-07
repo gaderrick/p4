@@ -64,7 +64,7 @@ __Delete__
   + In order for this project to work correctly (due to authentication w/ some of the social media oauth services), you 
   have to use `https://` in the URL. 
   + When you log into the web application, there are several ways to login:
-    + Login with the email `susanbuck@fas.harvard.edu` and the password `testpassword`
+    + Login with the email `susanbuck@fas.harvard.edu` and the password provided by email
     + Login/authenticate with one of the social media Oauth logins
     + `Register` a new account (w/ an email other than `susanbuck@fas.harvard.edu`)
   + There is data seeded for your email address `susanbuck@fas.harvard.edu`. If you authenticate with a social media login 

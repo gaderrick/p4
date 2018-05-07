@@ -8,7 +8,7 @@ class OrganizationsTableSeeder extends Seeder
     public function run()
     {
         $organizations = [
-            [1,1,'Trampoline and Tumbling Express','101 Steen Dr.','Lafayette',18,70508,1,'http://www.tntexpress.com','Tara Guidry','tntexpress@cox.net','337-988-5317','A0001',''],
+            [2,1,'Trampoline and Tumbling Express','101 Steen Dr.','Lafayette',18,70508,1,'http://www.tntexpress.com','Tara Guidry','tntexpress@cox.net','337-988-5317','A0001',''],
             [1,1,'Acadiana Gymnastics','PO Box 60085','Lafayette',18,70596,2,'https://www.acadianagymnastics.com','Chase Hardy','gymney@gmail.com','337-988-3547','A0002',''],
             [1,2,'Elmwood Gymnastics Academy','700 C ElmwoodPark Blvd.','Harahan',18,70123,3,'http://www.ochsnerfitness.com/club/scripts/section/section.asp?NS=GYMNASTIC','Toni Mortillaro','Hillaryhebert@hotmail.com','504-733-4496','A0003','']
 

@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('pagename')
+    Reset Password
+@endsection
+
 @section('content')
     <div class='container'>
         <div class='row'>

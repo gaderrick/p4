@@ -10,8 +10,8 @@ class UsersTableSeeder extends Seeder
         $users = [
             ['Jerry Derrick','jerry.derrick@gmail.com','testpassword'],
             ['Susan Buck','susanbuck@fas.harvard.edu','teacherpassword'],
-            ['Katrina Derrick','katrina.derrick@gmail.com','testpassword'],
-            ['Justice Derrick','justiceaderrick@xyz.com','testpassword'],
+            ['Jill Harvard','jill@harvard.edu','helloworld'],
+            ['Jamal Harvard','jamal@harvard.edu','helloworld'],
             ['Harmony Derrick','harmonyderrick@xyz.com','testpassword']
         ];
         $count = count($users);

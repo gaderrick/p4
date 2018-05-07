@@ -23,17 +23,18 @@ __Create__
   + Observe confirmation message
   
 __Read__
-  + Visit <http://p4.gaderrick.me/books> see a listing of all books
+  + Visit <https://p4.gaderrick.me/participant/index> to see a listing of all participants associated with you login
   
 __Update__
-  + Visit <http://p4.gaderrick.me/books>; choose the Edit button next to one of the books
-  + Make some edit to form
-  + Click *Save changes*
+  + Visit <https://p4.gaderrick.me/org/index>; choose the pencil icon in the `Actions` column for an `Organization`
+  + Make edits to the form
+  + Click *Update Organization* button
   + Observe confirmation message
   
 __Delete__
-  + Visit <http://p4.gaderrick.me/books>; choose the Delete button next to one of the books
-  + Confirm deletion
+  + Visit <https://p4.gaderrick.me/roster/1/index> to see a list of the rosters associated with an organization; 
+  + Click the trashcan icon in the actions column of a roster
+  + Click the `Delete` button on the follow on confirmation page
   + Observe confirmation message
 
 ## Outside resources

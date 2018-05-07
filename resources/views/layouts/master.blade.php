@@ -59,27 +59,27 @@
 @if (session('alert'))
     @if(session('alert_color'))
         <div class='col-md-12 flashAlert' style='background-color: {{ session('alert_color') }}'>
-    @else
-        <div class='col-md-12 flashAlert'>
-    @endif
-        {{ session('alert') }}
-        </div>
-@endif
-        <div class='content'>
-            @yield('content')
-        </div>
+            @else
+                <div class='col-md-12 flashAlert'>
+                    @endif
+                    {{ session('alert') }}
+                </div>
+            @endif
+            <div class='content'>
+                @yield('content')
+            </div>
 
-        <div style='height: 25px;'></div>
+            <div style='height: 25px;'></div>
 
-        <div class='footer' id='myFooter'>
-            <div style='display:table-row'>
-                <div style='display:table-cell; padding-left: 10px; text-align: center'>
-                    &copy; 2018 Gerald Derrick
+            <div class='footer' id='myFooter'>
+                <div style='display:table-row'>
+                    <div style='display:table-cell; padding-left: 10px; text-align: center'>
+                        &copy; 2018 Gerald Derrick
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Scripts -->
-        <script src='{{ asset('js/app.js') }}'></script>
-        </div>
+            <!-- Scripts -->
+            <script src='{{ asset('js/app.js') }}'></script>
+
 </body>
 </html>
